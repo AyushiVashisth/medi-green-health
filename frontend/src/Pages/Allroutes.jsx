@@ -6,6 +6,7 @@ import { BrandedDeals } from "./Cart/scroller";
 import AdminLogin from "./Admin Page/AdminLogin";
 import AddProducts from "./Admin Page/AddProducts";
 
+
 const Allroutes = () => {
   return (
     <div>
