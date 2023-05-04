@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as types from "./actionTypesProduct";
 
-export const getData = (sort, order, filtervalues) => async (dispatch) => {
+export const getData = () => async (dispatch) => {
   dispatch({ type: types.REQUEST_SUCCESS });
   try {
     let result = await axios.get(`http://localhost:8080/products`);
