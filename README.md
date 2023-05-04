@@ -112,7 +112,7 @@
 # Our Team :
 
  <ul>
-	<li><a href="https://github.com/souravpl8092">Ayushi Vashisth (Team Lead)</a></li>
+	<li><a href="https://github.com/AyushiVashisth">Ayushi Vashisth (Team Lead)</a></li>
         <li><a href="https://github.com/ankush3681">Ankush Kumar (Team Member)</a></li>
         <li><a href="https://github.com/Aajad2002">Aajad Kumar Prajapat(Team Member)</a> </li>
         <li><a href="https://github.com/sourabhpatel073">Sourabh Patel (Team Member)</a></li>
