@@ -7,11 +7,22 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+// import { useRouter } from "react-router-dom";
 import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useToast } from "@chakra-ui/react";
+// import { postCartData } from "@/redux/cart/cart.action";
 
 const ProductCard = (props) => {
+  // const { isAuth } = useSelector((state) => state.authReducer);
   const [addText, setAddText] = useState("ADD");
+  // const router = useRouter();
+  // const toast = useToast();
+  // const dispatch = useDispatch();
+  // const goToSingleProductPage = () => {
+  //   router.push(`/products/${props._id}`);
+  // };
 
   return (
     <GridItem
@@ -29,10 +40,17 @@ const ProductCard = (props) => {
           h="100%"
           src={props.src}
           alt={props.id}
+          // onClick={goToSingleProductPage}
           cursor="pointer"
         />
       </Box>
-      <Text fontSize="14px" fontWeight="600" mb="5px" cursor="pointer">
+      <Text
+        fontSize="14px"
+        fontWeight="600"
+        mb="5px"
+        // onClick={goToSingleProductPage}
+        cursor="pointer"
+      >
         {props.title.substring(0, 24).concat("...")}
       </Text>
       <Text color="grey" fontSize="13px" fontWeight="600" mb="10px">
@@ -59,15 +77,6 @@ const ProductCard = (props) => {
         </Text>
       </Flex>
       <Flex gap={"10px"}>
-        <Text
-          color="grey"
-          fontSize={"12px"}
-          mb={"10px"}
-          textDecor="line-through"
-          fontWeight={600}
-        >
-          {props["strike-price"] ? props["strike-price"] : null}₹
-        </Text>
         <Text fontSize={"13px"} mb={"10px"} color="#1aab2a" fontWeight={600}>
           {props["discount-percent"] ? props["discount-percent"] : "0%"}
         </Text>
@@ -85,6 +94,38 @@ const ProductCard = (props) => {
             bg: "#ff6f61",
             color: "white",
           }}
+          // onClick={() => {
+          //   if (isAuth && addText.length === 3) {
+          //     dispatch(
+          //       postCartData({
+          //         title: props.title,
+          //         src: props.src,
+          //         packsize: props.packsize,
+          //         price: props.price,
+          //         "strike-price": props["strike-price"],
+          //         "discount-percent": props["discount-percent"],
+          //         qty: 1,
+          //         rating: props.rating,
+          //         CardRatingDetail: props.CardRatingDetail,
+          //         description: props.description,
+          //         category: props.category,
+          //       })
+          //     );
+          //   }
+          //   if (!isAuth) {
+          //     toast({
+          //       title: "Product cannot be added.",
+          //       description: "Please login first.",
+          //       status: "error",
+          //       duration: 9000,
+          //       isClosable: true,
+          //       position: "top",
+          //       bg: "#ff6f61",
+          //     });
+          //   }
+          //   isAuth && setAddText("ADDED ✓");
+          // }}
+          // display={isAuth ? "block" : "none"}
         >
           {addText}
         </Button>

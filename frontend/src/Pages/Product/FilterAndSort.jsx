@@ -1,3 +1,4 @@
+import { getData } from "../../redux/Product/actionProduct";
 import {
   Box,
   Button,
@@ -17,19 +18,71 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+// import { useRouter } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getData } from "../../redux/Product/actionProduct";
 
-const FilterAndSort = () => {
+const FilterAndSort = ({
+  handleSortPrice,
+  handleSortRating,
+  handleSortReset,
+}) => {
+  // const router = useRouter();
   const btnRef = React.useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
+  const [filterValues, setFilterValues] = useState([]);
+  const [sort, setSort] = useState("");
+  const [Rating, setRating] = useState("");
+  const handleFilterChange = (value) => {
+    setFilterValues(value);
+  };
+
+  const handleReset = () => {
+    dispatch(getData("", "", []));
+  };
 
   useEffect(() => {
-    dispatch(getData());
+    let params = {};
+    if (filterValues.length) params.category = filterValues;
+    if (sort) {
+      params.sortBy = "price";
+      params.order = sort;
+    }
+    // router.push({
+    //   query: params,
+    // });
+    dispatch(getData("", "", filterValues));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [filterValues]);
+
+  useEffect(() => {
+    let params = {};
+    if (sort) {
+      params.sortBy = "price";
+      params.order = sort;
+    }
+    if (filterValues.length) params.category = filterValues;
+    // router.push({
+    //   query: params,
+    // });
+    dispatch(getData(params.sortBy, sort, filterValues));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sort]);
+
+  useEffect(() => {
+    let params = {};
+    if (sort) {
+      params.sortBy = "rating";
+      params.order = Rating;
+    }
+    // router.push({
+    //   query: params,
+    // });
+    if (filterValues.length) params.category = filterValues;
+    dispatch(getData(params.sortBy, Rating, filterValues));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [Rating]);
   return (
     <>
       <Show above="sm">
@@ -44,7 +97,11 @@ const FilterAndSort = () => {
         >
           <Box m="20px 0">
             <Heading fontSize={"14px"}>FILTER</Heading>
-            <CheckboxGroup colorScheme="green">
+            <CheckboxGroup
+              colorScheme="green"
+              value={filterValues}
+              onChange={handleFilterChange}
+            >
               <Stack color={"grey"} spacing={[1, 1]} direction={["column"]}>
                 <Checkbox fontSize="10px" value="calcium">
                   Calcium
@@ -58,7 +115,13 @@ const FilterAndSort = () => {
           <Divider />
           <Box m="20px 0">
             <Heading fontSize={"14px"}>SORT BY PRICE</Heading>
-            <RadioGroup colorScheme="green">
+            <RadioGroup
+              colorScheme="green"
+              onChange={(value) => {
+                setSort(value);
+              }}
+              value={sort}
+            >
               <Stack color={"grey"} direction="column" fontSize={"12px"}>
                 <Radio value="asc">Low to high</Radio>
                 <Radio value="des">High to low</Radio>
@@ -68,7 +131,13 @@ const FilterAndSort = () => {
           <Divider />
           <Box m="20px 0">
             <Heading fontSize={"14px"}>SORT BY RATING</Heading>
-            <RadioGroup colorScheme="green">
+            <RadioGroup
+              colorScheme="green"
+              onChange={(value) => {
+                setRating(value);
+              }}
+              value={Rating}
+            >
               <Stack color={"grey"} direction="column" fontSize={"12px"}>
                 <Radio value="asc">Low to high</Radio>
                 <Radio value="des">High to low</Radio>
@@ -83,6 +152,12 @@ const FilterAndSort = () => {
             _hover={{
               bg: "#ff6f61",
               color: "white",
+            }}
+            onClick={() => {
+              setFilterValues([]);
+              handleReset();
+              setSort("");
+              setRating("");
             }}
           >
             Reset
@@ -112,7 +187,11 @@ const FilterAndSort = () => {
                     <Heading fontSize={"14px"} mt="20px">
                       FILTER
                     </Heading>
-                    <CheckboxGroup colorScheme="green">
+                    <CheckboxGroup
+                      colorScheme="green"
+                      value={filterValues}
+                      onChange={handleFilterChange}
+                    >
                       <Stack
                         color={"grey"}
                         fontSize={"12px"}
@@ -135,6 +214,7 @@ const FilterAndSort = () => {
                         color={"grey"}
                         direction="column"
                         fontSize={"12px"}
+                        onChange={(value) => handleSortPrice(value)}
                       >
                         <Radio value="asc">Low to high</Radio>
                         <Radio value="desc">High to low</Radio>
@@ -149,6 +229,7 @@ const FilterAndSort = () => {
                         color={"grey"}
                         direction="column"
                         fontSize={"12px"}
+                        onChange={(value) => handleSortRating(value)}
                       >
                         <Radio value="asc">Low to high</Radio>
                         <Radio value="desc">High to low</Radio>
@@ -164,6 +245,7 @@ const FilterAndSort = () => {
                       bg: "#ff6f61",
                       color: "white",
                     }}
+                    onClick={() => handleSortReset()}
                   >
                     Reset
                   </Button>
