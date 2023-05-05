@@ -29,7 +29,7 @@ vitRouter.delete("/delete/:id", async (req, res) => {
     }
 })
 //update
-vitRouter.update("/update/:id", async (req, res) => {
+vitRouter.patch("/update/:id", async (req, res) => {
     let id = req.params.id
     try {
         await VitModel.findByIdAndUpdate({ _id: id }, req.body)
@@ -40,22 +40,41 @@ vitRouter.update("/update/:id", async (req, res) => {
     }
 })
 //get Data
-vitRouter.get("/:id?", async (req, res) => {
-    let id = req.params.id;
+vitRouter.get("/", async (req, res) => {    
+    const query = req.query;
+    const category = {};
+    if (query.category) {
+        category["category"] = query.category;
+    }
+
+    let sortQuery = {};
+
+    if (query.sortBy === "price") {
+        if (query.order === "asc") {
+            sortQuery = { price: 1 };
+        } else if (query.order === "desc") {
+            sortQuery = { price: -1 };
+        }
+    }
 
     try {
-        let vitamin;
-        if (id) {
-            vitamin = await VitModel.findById({ _id, id });
-        } else {
-            vitamin = await VitModel.find()
-        }
-
-
-
+        vitamin = await VitModel.find({
+            $and: [category],
+        }).sort(sortQuery)
         res.status(200).send(vitamin)
     } catch (error) {
         res.status(400).send({ "err": error.message })
 
     }
 })
+vitRouter.get("/:id",async(req,res)=>{
+ try {
+    let id=req.params.id
+    const data=await VitModel.findById({_id:id})
+    res.status(200).send(data)
+ } catch (error) {
+    res.status(400).send({ "err": error.message })
+
+ }
+})
+module.exports = vitRouter
