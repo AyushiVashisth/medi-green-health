@@ -8,9 +8,9 @@ import {
   FormControl,
   FormLabel,
 } from "@chakra-ui/react";
-import "./AddProducts.css";
+import "./AdminAddproducts.css";
 
-const AddProducts = () => {
+const AdminAddProducts = () => {
   return (
     <Box>
       <Flex className="addproductpagecontainer" justifyContent={"space-evenly"}>
@@ -29,23 +29,12 @@ const AddProducts = () => {
               <FormControl isRequired>
                 <FormLabel>ID</FormLabel>
                 <Input type="number" name="id" placeholder="Enter ID" />
-                <FormLabel>Image1</FormLabel>
+                
+                <FormLabel>Image</FormLabel>
                 <Input
                   type="text"
                   name="image"
-                  placeholder="Enter Image1 URL"
-                />
-                <FormLabel>Image2</FormLabel>
-                <Input
-                  type="text"
-                  name="image"
-                  placeholder="Enter Image2 URL"
-                />
-                <FormLabel>Image3</FormLabel>
-                <Input
-                  type="text"
-                  name="image"
-                  placeholder="Enter Image3 URL"
+                  placeholder="Enter Image URL"
                 />
                 <FormLabel>Title</FormLabel>
                 <Input
@@ -96,4 +85,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default AdminAddProducts;

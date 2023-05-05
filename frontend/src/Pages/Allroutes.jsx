@@ -4,9 +4,10 @@ import Products from "./Product/Product";
 import Signup from "./Signup";
 import { BrandedDeals } from "./Cart/scroller";
 import AdminLogin from "./Admin Page/AdminLogin";
-import AddProducts from "./Admin Page/AddProducts";
+import AdminAddProducts from "./Admin Page/AdminAddProducts";
+import AdminProducts from "./Admin Page/AdminProducts";
+import AdminEditProduct from "./Admin Page/AdminEditProduct";
 import CartPage from "./Cart/CartPage";
-
 
 const Allroutes = () => {
   return (
@@ -16,7 +17,9 @@ const Allroutes = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<CartPage/>} />
         <Route path="/adminlogin" element={<AdminLogin />} />
-        <Route path="/adminaddproduct" element={<AddProducts />} />
+        <Route path="/adminaddproduct" element={<AdminAddProducts />} />
+        <Route path="/adminproducts" element={<AdminProducts />} />
+        <Route path="/admineditproduct" element={<AdminEditProduct />} />
       </Routes>
     </div>
   );
