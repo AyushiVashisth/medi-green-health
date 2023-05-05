@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
-
+import Carousalsignup from "../Components/CarousalSignup"
 
 import {
   Modal,
@@ -20,6 +20,7 @@ import {
   Box,
   useToast,
 } from '@chakra-ui/react'
+
 
 const Signup = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -74,7 +75,7 @@ const Signup = () => {
           <ModalBody>
             <Box display="flex" justifyContent="space-between" >
               <Box w='45%' h="300px" >
-
+                <Carousalsignup/>
               </Box>
 
               <Box display="flex" flexDirection="column" w='50%' h="300px" textAlign="center" alignItems="center" justifyContent="space-between"  >
