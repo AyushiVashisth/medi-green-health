@@ -20,7 +20,14 @@ app.use("/users", userRouter);
 // product Router
 const productRouter = require("./Routes/product.Route");
 app.use("/products", productRouter);
-
+//vitamin Router
+const vitRouter=require("./Routes/Vitamin.Router");
+app.use("/vitamin",vitRouter)
+//
+//cart Router for getting cart Data;
+const cartRouter=require("./Routes/Cart.Route");
+app.use("/cart",cartRouter)
+//
 app.get("/", (req, res) => {
   res.setHeader("Content-type", "text/html");
   res.send(`<h1>Tata 1mg Backend</h1>`);
