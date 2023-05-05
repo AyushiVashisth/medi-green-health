@@ -167,7 +167,7 @@ const FilterAndSort = ({
 
       {/* -------------------- */}
 
-      <Hide above="sm">
+      <Hide above="lg">
         <>
           <Button ref={btnRef} colorScheme="gray" onClick={onOpen}>
             Filter and Sort
