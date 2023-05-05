@@ -8,7 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 import StarRating from "./StarRating";
 import { Box, Image, Text, Flex } from "@chakra-ui/react";
 import { AiOutlineUnderline } from "react-icons/ai";
-export const BrandedDeals = () => {
+export const Scroller = () => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

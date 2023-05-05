@@ -1,13 +1,13 @@
 
 const jwt = require("jsonwebtoken")
-
+require('dotenv').config()
 const auth = (req, res, next) => {
     const token = req.headers.authorization
     let tok = token.split(" ")[1]
     if (tok) {
 
 
-        jwt.verify(tok, 'eval', function (err, decoded) {
+        jwt.verify(tok,'urfi', function (err, decoded) {
             if (decoded) {
                 req.body.userID = decoded.userID
                 console.log(decoded)
