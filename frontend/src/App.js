@@ -6,7 +6,8 @@ import Signup from "./Pages/Signup";
 function App() {
   return (
     <div className="App">
-     <Signup/>
+     {/* <Signup/> */}
+     <Allroutes/>
     </div>
   );
 }

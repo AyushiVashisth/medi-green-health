@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Box,
@@ -10,9 +10,44 @@ import {
   Link,
   Button,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { postLogin } from "../../redux/AdminAuthRedux/action";
 
 const AdminLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userDetail = { email, password };
+
+    dispatch(postLogin(userDetail))
+      .then(() => {
+        toast({
+          title: "Login Success.",
+          description: "Welcome Admin.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch(() => {
+        toast({
+          title: "Wrong Credential.",
+          description: "Please Try again to Login.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      });
+
+    setEmail("");
+    setPassword("");
+  };
   return (
     <Flex
       minH={"100vh"}
@@ -44,15 +79,26 @@ const AdminLogin = () => {
                 id="email"
                 display="inline-block"
                 mr={2}
-                isRequired
+                
                 width={"100%"}
               >
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" name="email" />
+                <Input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  
+                />
               </FormControl>
-              <FormControl id="password" isRequired>
+              <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" name="password" />
+                <Input
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
@@ -71,6 +117,7 @@ const AdminLogin = () => {
                     bg: "#eeeeee",
                     color: "black",
                   }}
+                  onClick={handleSubmit}
                 >
                   Sign in
                 </Button>
