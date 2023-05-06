@@ -25,6 +25,7 @@ const ScrollButton = () => {
         });
     };
     // useEffect(())
+    //Pagal aurt
     window.addEventListener('scroll', toggleVisible);
 
     return (
