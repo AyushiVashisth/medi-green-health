@@ -156,6 +156,7 @@ const AdminProducts = () => {
                 m="auto"
                 boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
                 borderRadius={"10px"}
+                key={item._id}
               >
                 <Box maxW={"100%"} h={"150px"} mb={"10px"} align={"center"}>
                   <Image
