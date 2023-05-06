@@ -3,8 +3,9 @@
   display: flex;
   background-color: #f1f3f6;
   color: #29303e;
-  min-height: 91vh;
+  min-height: 500px;
   padding: 5px 10px;
+ 
 }
 
 .cart-page > * {
@@ -21,9 +22,9 @@
 }
 
 .cart-page-right {
-  /* height: 50vh; */
+  height: 400px;
   width: 30%;
-  position: fixed;
+  /* position: relative; */
   right: 2%;
   background-color: white;
   border: 1px solid #e3e5e8;
@@ -155,7 +156,7 @@
 .place-order {
   background-color: #e72744;
   padding: 1vh 1.5vw 1vh 1.5vw;
-  margin: 5px 0 10px 2vw;
+  margin: 5px ;
   color: white;
   border-radius: 5px;
 }
@@ -214,8 +215,10 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin: 10px;
   }
   .place-order {
     margin-right: 2vw;
+    margin-bottom: 10px;
   }
 }

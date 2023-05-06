@@ -177,7 +177,7 @@ function CartPage(props) {
           </div>
         </div>
       </div>
-     
+     <div><Scroller  /></div>
     </>
   );
 }

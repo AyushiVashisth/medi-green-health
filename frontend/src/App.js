@@ -5,8 +5,9 @@ import Login from "./Pages/Login";
 function App() {
   return (
     <div className="App">
-     <Allroutes/>
-     <Login/>
+
+    <Allroutes/>
+
     </div>
   );
 }
