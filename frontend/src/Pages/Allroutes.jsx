@@ -8,7 +8,10 @@ import AdminAddProducts from "./Admin Page/AdminAddProducts";
 import AdminProducts from "./Admin Page/AdminProducts";
 import AdminEditProduct from "./Admin Page/AdminEditProduct";
 import CartPage from "./Cart/CartPage";
+
 import Payments from "./Payment/Payments";
+
+
 
 const Allroutes = () => {
   return (
@@ -26,5 +29,4 @@ const Allroutes = () => {
     </div>
   );
 };
-
 export default Allroutes;
