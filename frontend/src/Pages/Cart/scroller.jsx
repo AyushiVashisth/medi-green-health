@@ -141,6 +141,7 @@ export const Scroller = () => {
 };
 
 const DIV = styled.div`
+     margin-top:20px;
   .heading-home-page {
     margin-top: 52px;
     display: flex;
