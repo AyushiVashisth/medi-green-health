@@ -38,7 +38,7 @@ const Signup = () => {
       email,
       password
     }
-    fetch("", {
+    fetch("https://onemg-database.onrender.com/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
