@@ -80,8 +80,8 @@
       padding: 0;
     }
     .cart-product-details h3,
-    h6,
-    p {
+    h6, .cart-product-details>p
+     {
       padding-left: 7%;
     }
     .cart-product-buttons button {
