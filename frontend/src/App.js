@@ -1,7 +1,9 @@
 import "./App.css";
+import Footer from "./Components/Footer";
 import Allroutes from "./Pages/Allroutes";
 import Homepage from "./Pages/Homepage";
 import Login from "./Pages/Login";
+
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
     <Allroutes/>
     <Login/>
     <Homepage/>
+      <Allroutes />     
+      <Footer />
     </div>
   );
 }

@@ -5,7 +5,6 @@ import PaymentForm from "./PaymentForm";
 import Checkout from "./Checkout";
 import Review from "./Review";
 import Poster from "./right.png";
-import { Box } from "@mui/system";
 const Payments = () => {
   return (
     <div>

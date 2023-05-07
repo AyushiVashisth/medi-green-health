@@ -1,19 +1,22 @@
 import axios from "axios";
 import * as types from "./actionTypesProduct";
 
-export const getData = (sort, order, filtervalues) => async (dispatch) => {
+export const getData = (obj) => async (dispatch) => {
+ 
+
   dispatch({ type: types.REQUEST_SUCCESS });
   try {
-    let result = await axios.get(`http://localhost:1111/products`, {
-      params: {
-        category: filtervalues,
-        sortBy: sort,
-        order,
-      },
-    });
-    console.log(filtervalues, sort, order);
-    dispatch({ type: types.GET_PRODUCT_REQUEST, payload: result.data });
-    return result.data;
+    axios.get(`https://onemg-database.onrender.com/vitamin`,
+
+      obj
+
+    ).then((res) => {
+      console.log(res.data)
+      dispatch({ type: types.GET_PRODUCT_REQUEST, payload: res.data });
+    })
+    console.log("p", params);
+   
+
   } catch (error) {
     dispatch({ type: types.REQUEST_ERROR, payload: error.message });
   }
