@@ -24,6 +24,12 @@ import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import Navbar1 from "../../Components/Navbar/Navbar1";
 import HomeNavbar from "../../Components/Navbar/HomeNavbar";
+import {
+  healthCare_device,
+  second,
+} from "../../Components/Caraousel/data"
+import ManualCarousels from "../../Components/Caraousel/Caraousel";
+import BigProduct from "../../Components/Caraousel/BigProduct";
 
 const SingalProductPage = () => {
   let { id } = useParams();
@@ -168,12 +174,12 @@ const SingalProductPage = () => {
               borderRadius={"10px"}
               ml={["70px", "0px", "0px", "0px", "0px"]}
             >
-              <Flex h="37px" bgColor={"green.200"} borderTopRadius="10px" p={2}>
+              <Flex w={"100%"} h="37px" bgColor={"green.200"} borderTopRadius="10px" p={2}>
                 <Box ml={"20px"}>
                   <BsGraphUpArrow size={20} />
                 </Box>
                 <Text ml={"20px"} fontSize={12}>
-                  26 people bought this recently
+                  420 people bought this recently
                 </Text>
               </Flex>
               <Box w={"100%"} pl="5" pr="5">
@@ -585,6 +591,28 @@ const SingalProductPage = () => {
           </Stack>
         </Box>
       </DIV>
+      <Box>
+        <Text
+          ml={["3%", "3%", "3%", "4%", "6%"]}
+          fontSize={["16px", "16px", "18px", "20px", "24px"]}
+          fontWeight={600}
+          mb={"-2%"}
+        >
+          Tata 1mg health products
+        </Text>
+        <ManualCarousels allData={healthCare_device} />
+      </Box>
+      <Box>
+        <Text
+          ml={["3%", "3%", "3%", "4%", "6%"]}
+          fontSize={["16px", "16px", "18px", "20px", "24px"]}
+          fontWeight={600}
+          mb={"-2%"}
+        >
+          स्वास्थ्य ही धन है
+        </Text>
+        <BigProduct allData={second} />
+        </Box>
     </>
   );
 };
@@ -594,3 +622,5 @@ const DIV = styled.div`
   margin: auto;
 `;
 export default SingalProductPage;
+
+
