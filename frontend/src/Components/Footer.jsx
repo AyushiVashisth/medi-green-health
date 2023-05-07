@@ -513,7 +513,7 @@ const Footer = () => {
                     lineHeight={"22px"}
                     color="#666666"
                   >
-                    All products displayed on CVAAK are procured from verified
+                    All products displayed on MEDI Green are procured from verified
                     and licensed pharmacies. All labs listed on the platform are
                     accredited
                   </Text>
@@ -538,7 +538,7 @@ const Footer = () => {
                     lineHeight={"22px"}
                     color="#666666"
                   >
-                    CVAAK uses Secure Sockets Layer (SSL) 128-bit encryption and
+                    MEDI Green uses Secure Sockets Layer (SSL) 128-bit encryption and
                     is Payment Card Industry Data Security Standard (PCI DSS)
                     compliant
                   </Text>
@@ -607,7 +607,7 @@ const Footer = () => {
               <h2>
                 <AccordionButton>
                   <Box as="span" flex="1" textAlign="left">
-                    Know more about CVAAK
+                    Know more about MEDI Green
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
@@ -621,7 +621,7 @@ const Footer = () => {
                   lineHeight={"22px"}
                   color="#666666"
                 >
-                  CVAAK provides you with medical information which is curated,
+                 MEDI Green provides you with medical information which is curated,
                   written and verified by experts, accurate and trustworthy. Our
                   experts create high-quality content about medicines, diseases,
                   lab investigations, Over-The-Counter (OTC) health products,
@@ -680,7 +680,7 @@ const Footer = () => {
             lineHeight={"22px"}
             color="#666666"
           >
-            © 2023 CVAAK. All rights reserved. In compliance with Drugs and
+            © 2023 MEDI Green. All rights reserved. In compliance with Drugs and
             Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945, we{" "}
             {"don't"}
             process requests for Schedule X and other habit forming drugs.
