@@ -2,13 +2,13 @@ import React from "react";
 
 import {
   Box,
-  Center,  
+  Center,
   Text,
   Flex,
   Stack,
   Tag,
   Grid,
-  Image
+  Image,
 } from "@chakra-ui/react";
 const Full = () => {
   const checkups = [
@@ -62,7 +62,6 @@ const Full = () => {
       <Center
         bgColor={"white"}
         w="100%"
-        // border="1px solid black"
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         mt="10"
         mb="10"
@@ -135,8 +134,6 @@ const Full = () => {
                     >
                       {item.rating}{" "}
                     </Tag>
-
-                    {/* <Text bg="green" color="white" p="2px">{item.rating} </Text> */}
                     <Text fontSize="10px">ISO</Text>
                   </Flex>
                   <Flex gap="10px">

@@ -2,7 +2,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineHome, AiOutlineShoppingCart } from "react-icons/ai";
-import {  MdLibraryAdd } from "react-icons/md"
+import { MdLibraryAdd } from "react-icons/md";
 import { TbReportMedical } from "react-icons/tb";
 
 import { Link } from "react-router-dom";
