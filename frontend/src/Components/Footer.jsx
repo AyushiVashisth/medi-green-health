@@ -36,7 +36,7 @@ const Footer = () => {
           size={{ xl: "lg", lg: "40px", md: "30px", sm: "20px", base: "20px" }}
           mb={"30px"}
         >
-          Stay Healthy with CVAAK: Your Favourite Online Pharmacy and Healthcare
+          Stay Healthy with MEDI Green: Your Favourite Online Pharmacy and Healthcare
           Platform
         </Heading>
         <Text as="b" size="md" mb={"20px"}>
@@ -53,7 +53,7 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          CVAAK is {"India's"} leading digital healthcare platform. From doctor
+          MEDI Green is {"India's"} leading digital healthcare platform. From doctor
           consultations on chat to online pharmacy and lab tests at home: we
           have it all covered for you. Having delivered over 25 million orders
           in 1000+ cities till date, we are on a mission to bring {"care"} to
@@ -61,7 +61,7 @@ const Footer = () => {
         </Text>
 
         <Text as="b" size="md" mt={"20px"}>
-          CVAAK: Your Favourite Online Pharmacy!
+        MEDI Green: Your Favourite Online Pharmacy!
         </Text>
         <Text
           mb={"10px"}
@@ -74,7 +74,7 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          CVAAK is {"India's "}leading online chemist with over 2 lakh medicines
+          MEDI Green is {"India's "}leading online chemist with over 2 lakh medicines
           available at the best prices. We are your one-stop destination for
           other healthcare products as well, such as over the counter
           pharmaceuticals, healthcare devices and homeopathy and ayurveda
@@ -105,7 +105,7 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          And there is more! At CVAAK, you can buy health products and medicines
+          And there is more! At MEDI Green, you can buy health products and medicines
           online at best discounts.
         </Text>
         <Text
@@ -120,7 +120,7 @@ const Footer = () => {
           color="#666666"
         >
           Now, {"isn't"} that easy? Why go all the way to the medicine store and
-          wait in line, when you have CVAAK Pharmacy at your service.
+          wait in line, when you have MEDI Green Pharmacy at your service.
         </Text>
         <Text as="b" size="md" mb={"30px"}>
           The Feathers in Our Cap
@@ -136,7 +136,7 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          At CVAAK, our goal is to make healthcare understandable, accessible
+          At MEDI Green, our goal is to make healthcare understandable, accessible
           and affordable in India. We set out on our journey in 2015, and have
           come a long way since then. Along the way, we have been conferred with
           prestigious titles like BML Munjal Award {"for 'Business"} Excellence
@@ -157,7 +157,7 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          CVAAK is {"India's"} leading digital healthcare platform, where you
+          MEDI Green is {"India's"} leading digital healthcare platform, where you
           can buy medicines online with discount. Buy medicine online in Delhi,
           Mumbai, Bangalore, Hyderabad, Pune, Gurgaon, Noida, Kolkata, Chennai,
           Ahmedabad, Lucknow and around a 1000 more cities.
