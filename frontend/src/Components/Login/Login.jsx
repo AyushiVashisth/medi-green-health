@@ -1,4 +1,3 @@
-import Carousalsignup from "../../CarousalSignup";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +17,7 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
+import Carousalsignup from "../CarousalSignup";
 
 const Login = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
