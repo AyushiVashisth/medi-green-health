@@ -9,7 +9,6 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 import "./AdminAddproducts.css";
-import { useState } from "react";
 
 const AdminAddProducts = () => {
   const [image,setImage] = useState("");
