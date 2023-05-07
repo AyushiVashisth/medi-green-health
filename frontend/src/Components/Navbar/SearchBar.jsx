@@ -5,7 +5,6 @@ import {
   Input,
   InputGroup,
   InputLeftAddon,
-  Select,
   Text,
   Link,
   useBoolean,
@@ -19,6 +18,7 @@ function SearchBar() {
   const [Products, setProducts] = useState([]);
   const [showDropdown, setShowDropdown] = useBoolean();
   const throttledText = useThrottle(onChangeValue, 400);
+
   const searchMovies = async () => {
     const data = await fetch(`https://onemg-database.onrender.com/vitamin`);
     const res = await data.json();
@@ -48,6 +48,19 @@ function SearchBar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [throttledText]);
   console.log(search);
+  const [add, setP] = useState("")
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords
+
+      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+      fetch(url).then(res => res.json()).then((loc) => {
+
+        setP(loc.address.county.split(" ")[0])
+      })
+    })
+  }, [])
   return (
     <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff">
       <Flex justify={"space-around"} minH={"40px"} py="10px" align={"center"}>
@@ -58,15 +71,20 @@ function SearchBar() {
           align={"center"}
         >
           <InputGroup size={"sm"} width={{ base: "90%", md: "30%" }}>
-            <InputLeftAddon children={<FaSearchLocation color="gray.300" />} />
-            <Select bg={"#f1f4f6"} focusBorderColor="#f1f4f6">
-              <option value="New Delhi">New Delhi</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Bengaluru">Bengaluru</option>
-              <option value="Chennai">Chennai</option>
-              <option value="Hydrabad">Hydrabad</option>
-              <option value="Jaipur">Jaipur</option>
-            </Select>
+            <InputLeftAddon children={<FaSearchLocation color="gray.300" onClick={
+              () => {
+                navigator.geolocation.getCurrentPosition(position => {
+                  const { latitude, longitude } = position.coords
+
+                  const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+                  fetch(url).then(res => res.json()).then((loc) => {
+
+                    setP(loc.address.county.split(" ")[0])
+                  })
+                })
+              }
+            } />} />
+            <Input bg={"#f1f4f6"} focusBorderColor="#f1f4f6" value={add ? add : "New Delhi"} />
           </InputGroup>
           <Input
             ml={"20px"}

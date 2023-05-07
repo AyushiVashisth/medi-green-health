@@ -2,14 +2,17 @@ function getCart() {
   if (localStorage.getItem("cartItems"))
    { return JSON.parse(localStorage.getItem("cartItems"))};
 
-  localStorage.setItem("cartItems", JSON.stringify([{
-    img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/qysbfwlucvdhkvdgqsmv.jpg",
-    title: "Dabur Vasant Kusumakar Ras with Gold & Pearl Tablet",
-    MRP: "₹2120",
-    price: " ₹1399",
-    discount: "34%",
-    rating: 4.2,
-  }]));
+  // localStorage.setItem("cartItems", JSON.stringify([
+  // {
+  //   "_id": "12",
+  //   "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/vitamin-supplement/b/2/z/90-salmon-fish-oil-omega-3-capsule-1000-mg-with-epa-180mg-and-original-imaghhwh67puse6s.jpeg?q=70",
+  //   "title": "CF Salmon Fish Oil Omega 3 Capsule 1000 mg with EPA 180...",
+  //   "price": 695,
+  //   "rating": 4.4,
+  //   "discount": 31,
+  //   "quantity":1,
+  //   "category": "supplement"
+  // }]));
   return [];
 }
 
@@ -20,11 +23,12 @@ function addItemToCart({
   rating,
   quantity,
   img,
-  date,
+  discount,
+  category
 }) {
   const cart = JSON.parse(localStorage.getItem("cartItems"));
   // console.log(cart);
-  cart.push({ id, title, price, rating, quantity, img, date });
+  cart.push({ id, title, price, rating, quantity, img });
   // console.log(cart);
   localStorage.setItem("cartItems", JSON.stringify(cart));
 }
