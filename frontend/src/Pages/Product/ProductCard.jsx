@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 // import { useRouter } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import Swal from "sweetalert2";
 // import { useDispatch, useSelector } from "react-redux";
@@ -24,7 +24,18 @@ const ProductCard = (props) => {
   // const goToSingleProductPage = () => {
   //   router.push(`/products/${props._id}`);
   // };
+ 
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  )
+  const handleAdd=(el)=>{
+    const newCartItems = [...cartItems, el];
+    setCartItems(newCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+  }
+  useEffect(()=>{
 
+  },[cartItems])
   return (
     <GridItem
       w="240px"
@@ -143,8 +154,10 @@ const ProductCard = (props) => {
               timer: 1500,
             });
             setAddText("ADDED ✓");
+            handleAdd({...props})
+            
           }}
-
+      
           // display={isAuth ? "block" : "none"}
         >
           {addText}

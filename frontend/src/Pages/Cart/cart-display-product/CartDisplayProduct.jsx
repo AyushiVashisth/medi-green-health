@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function CartDisplayProduct(props) {
   const [quantity, setQuantity] = useState(props.quantity);
 
-  const seller = "Seller: DJP Team";
+  const seller = " MediGreen ";
   const { id, name, image, price, rating, handleRemove, calculateTotalPrice } =
     props;
 
@@ -53,9 +53,9 @@ function CartDisplayProduct(props) {
           <Link to={`/products/${id}`}>
             <h3 className="capitalize">{name}</h3>
           </Link>
-          <h6>{seller}</h6>
-          <h3>{price}</h3>
-          <p>{rating}</p>
+          <h6>Seller - {seller}</h6>
+          <h3>Price - ₹{price}</h3>
+          <p>Rating - {rating}</p>
           <div className="cart-product-buttons">
             <button onClick={() => handleRemove(id)}>Remove</button>
           </div>

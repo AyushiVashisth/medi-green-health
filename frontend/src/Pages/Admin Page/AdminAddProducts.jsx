@@ -7,28 +7,54 @@ import {
   Input,
   FormControl,
   FormLabel,
+  useToast,
 } from "@chakra-ui/react";
 import "./AdminAddproducts.css";
+import AdminSidebar from "../../Components/AdminSidebar";
+import { useDispatch } from "react-redux";
+import { postProduct } from "../../redux/admincrud/action";
+import { useNavigate } from "react-router-dom";
 
 const AdminAddProducts = () => {
-  const [image,setImage] = useState("");
-  const [title,setTitle] = useState("");
-  const [price,setPrice] = useState("");
-  const [discount,setDiscount] = useState("");
-  const [rating,setRating] = useState("");
-  const [category,setCategory] = useState("");
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [rating, setRating] = useState("");
+  const [category, setCategory] = useState("");
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const produceDetail = {
+      image,
+      title,
+      price,
+      discount,
+      rating,
+      category,
+    };
 
-  const handleSubmit = (e) =>{
-      e.preventDefault();
-      const produceDetail ={
-        image,title,price,discount,rating,category
-      }
-    }
+    dispatch(postProduct(produceDetail)).then((res) => {
+      toast({
+        title: "product Added.",
+        description: "Product is added to database.",
+        status: "success",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+      navigate("/adminproducts");
+    });
+  };
   return (
     <Box>
       <Flex className="addproductpagecontainer" justifyContent={"space-evenly"}>
-        <Box className="sidebarcont"></Box>
+        <Box className="sidebarcont">
+          <AdminSidebar />
+        </Box>
         <Box className="adminpagedashboardbox">
           <Box
             className="form"
@@ -41,15 +67,13 @@ const AdminAddProducts = () => {
                 ADD PRODUCT
               </Heading>
               <FormControl isRequired>
-                
-                
                 <FormLabel>Image</FormLabel>
                 <Input
                   type="text"
                   name="image"
                   placeholder="Enter Image URL"
                   value={image}
-                  onChange={(e)=>setImage(e.target.value)}
+                  onChange={(e) => setImage(e.target.value)}
                 />
                 <FormLabel>Title</FormLabel>
                 <Input
@@ -57,7 +81,7 @@ const AdminAddProducts = () => {
                   name="title"
                   placeholder="Enter Product Title"
                   value={title}
-                  onChange={(e)=>setTitle(e.target.value)}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
 
                 <FormLabel>Discount</FormLabel>
@@ -66,7 +90,7 @@ const AdminAddProducts = () => {
                   name="discount"
                   placeholder="Enter Discount"
                   value={discount}
-                  onChange={(e)=>setDiscount(e.target.value)}
+                  onChange={(e) => setDiscount(e.target.value)}
                 />
 
                 <FormLabel>Rating</FormLabel>
@@ -75,7 +99,7 @@ const AdminAddProducts = () => {
                   name="rating"
                   placeholder="Enter Product Rating"
                   value={rating}
-                  onChange={(e)=>setRating(e.target.value)}
+                  onChange={(e) => setRating(e.target.value)}
                 />
                 <FormLabel>Price</FormLabel>
                 <Input
@@ -83,7 +107,7 @@ const AdminAddProducts = () => {
                   name="price"
                   placeholder="Enter Product Price"
                   value={price}
-                  onChange={(e)=>setPrice(e.target.value)}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
                 <FormLabel>Category</FormLabel>
                 <Input
@@ -91,7 +115,7 @@ const AdminAddProducts = () => {
                   name="category"
                   placeholder="Enter Product Category"
                   value={category}
-                  onChange={(e)=>setCategory(e.target.value)}
+                  onChange={(e) => setCategory(e.target.value)}
                 />
                 <Button
                   backgroundColor={"#004aad"}

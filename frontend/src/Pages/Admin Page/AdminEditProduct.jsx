@@ -7,32 +7,57 @@ import {
   FormControl,
   FormLabel,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AdminSidebar from "../../Components/AdminSidebar";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { patchProduct } from "../../redux/admincrud/action";
+
+const initialState ={
+  image:"",
+  title:"",
+  rating:"",
+  price:"",
+  discount:"",
+  category:""
+}
 
 const AdminEditProduct = () => {
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [discount, setDiscount] = useState("");
-  const [rating, setRating] = useState("");
-  const [category, setCategory] = useState("");
+  const {id} = useParams();
+  const [product, setProduct] = useState(initialState);
+ 
 
-  const handleSubmit = (e) => {
+
+  // console.log(id);
+
+  const singleproduct = useSelector((state)=>{
+    //  console.log(state)
+     return state.AdminProductReducer.products;
+  })
+  // console.log(singleproduct)
+
+  // useEffect(()=>{
+  //   const data = singleproduct.find((ele)=> ele._id === id)
+  //   setProduct(data);
+  // },[])
+
+
+  const handleChange = (e) =>{
+    // const {name,value} = e.target;
+    //  setProduct((prev) => {
+    //   return {...prev,[name]:value}
+    //  })
+  }
+
+  const handleEdit = (e) =>{
     e.preventDefault();
-    const produceDetail = {
-      image,
-      title,
-      price,
-      discount,
-      rating,
-      category,
-    };
-  };
+    // dispatchEvent(patchProduct(product,id));
+  }
 
   return (
     <Box>
       <Flex className="addproductpagecontainer" justifyContent={"space-evenly"}>
-        <Box className="sidebarcont"></Box>
+        <Box className="sidebarcont"><AdminSidebar/></Box>
         <Box className="adminpagedashboardbox">
           <Box
             className="form"
@@ -46,17 +71,23 @@ const AdminEditProduct = () => {
 
               <FormControl isRequired>
                 <FormLabel>ID</FormLabel>
-                <Input type="text" name="id" placeholder="Enter Product Id" />
+                <Input type="text"
+                 name="id"
+                 value={product._id}
+                placeholder="Enter Product Id" />
                 <FormLabel>Image</FormLabel>
-                <Input type="text" name="image" placeholder="Enter Image URL" value={image}
-                  onChange={(e)=>setImage(e.target.value)} />
+                <Input type="text"
+                  name="image"
+                  placeholder="Enter Image URL"
+                  value={product.image}
+                  onChange={handleChange} />
                 <FormLabel>Title</FormLabel>
                 <Input
                   type="text"
                   name="title"
                   placeholder="Enter Product Title"
-                  value={title}
-                  onChange={(e)=>setTitle(e.target.value)}
+                  value={product.title}
+                  onChange={handleChange}
                 />
 
                 <FormLabel>Discount</FormLabel>
@@ -64,16 +95,16 @@ const AdminEditProduct = () => {
                   type="number"
                   name="discount"
                   placeholder="Enter Discount"
-                  value={discount}
-                  onChange={(e)=>setDiscount(e.target.value)}
+                  value={product.discount}
+                  onChange={handleChange}
                 />
                 <FormLabel>Rating</FormLabel>
                 <Input
                   type="number"
                   name="rating"
                   placeholder="Enter Product Rating"
-                  value={rating}
-                  onChange={(e)=>setRating(e.target.value)}
+                  value={product.rating}
+                  onChange={handleChange}
                 />
 
                 <FormLabel>Price</FormLabel>
@@ -81,22 +112,23 @@ const AdminEditProduct = () => {
                   type="number"
                   name="price"
                   placeholder="Enter Product Price"
-                  value={price}
-                  onChange={(e)=>setPrice(e.target.value)}
+                  value={product.price}
+                  onChange={handleChange}
                 />
                 <FormLabel>Category</FormLabel>
                 <Input
                   type="text"
                   name="category"
                   placeholder="Enter Product category"
-                  value={category}
-                  onChange={(e)=>setCategory(e.target.value)}
+                  value={product.category}
+                  onChange={handleChange}
                 />
                 <Button
                   backgroundColor={"#004aad"}
                   color="white"
                   marginTop={"3%"}
                   type="submit"
+                  onClick={handleEdit}
                 >
                   EDIT PRODUCT
                 </Button>
