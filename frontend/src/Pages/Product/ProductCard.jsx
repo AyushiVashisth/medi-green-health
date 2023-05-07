@@ -7,23 +7,22 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-// import { useRouter } from "react-router-dom";
 import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import Swal from "sweetalert2";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useToast } from "@chakra-ui/react";
-// import { postCartData } from "@/redux/cart/cart.action";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getProductsdetails } from "../../redux/ProductDetails/action";
 
 const ProductCard = (props) => {
-  // const { isAuth } = useSelector((state) => state.authReducer);
   const [addText, setAddText] = useState("ADD");
-  // const router = useRouter();
-  // const toast = useToast();
-  // const dispatch = useDispatch();
-  // const goToSingleProductPage = () => {
-  //   router.push(`/products/${props._id}`);
-  // };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleDetails = (id) => {
+    dispatch(getProductsdetails(id));
+    navigate(`/products/${id}`);
+  };
 
   return (
     <GridItem
@@ -35,23 +34,22 @@ const ProductCard = (props) => {
       m="auto"
       boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
     >
-      <Box maxW={"100%"} h={"150px"} mb={"10px"} align={"center"}>
+      <Box
+        maxW={"100%"}
+        h={"150px"}
+        mb={"10px"}
+        align={"center"}
+        onClick={() => handleDetails(props._id)}
+      >
         <Image
           objectFit={"contain"}
           h="100%"
           src={props.image}
           alt={props.id}
-          // onClick={goToSingleProductPage}
           cursor="pointer"
         />
       </Box>
-      <Text
-        fontSize="14px"
-        fontWeight="600"
-        mb="5px"
-        // onClick={goToSingleProductPage}
-        cursor="pointer"
-      >
+      <Text fontSize="14px" fontWeight="600" mb="5px" cursor="pointer">
         {props.title}
       </Text>
       <Text color="grey" fontSize="13px" fontWeight="600" mb="10px">
@@ -106,35 +104,6 @@ const ProductCard = (props) => {
           }}
           border={"2px solid #ff6f61"}
           onClick={() => {
-            //   if (isAuth && addText.length === 3) {
-            //     dispatch(
-            //       postCartData({
-            //         title: props.title,
-            //         src: props.src,
-            //         packsize: props.packsize,
-            //         price: props.price,
-            //         "strike-price": props["strike-price"],
-            //         "discount-percent": props["discount-percent"],
-            //         qty: 1,
-            //         rating: props.rating,
-            //         CardRatingDetail: props.CardRatingDetail,
-            //         description: props.description,
-            //         category: props.category,
-            //       })
-            //     );
-            //   }
-            //   if (!isAuth) {
-            //     toast({
-            //       title: "Product cannot be added.",
-            //       description: "Please login first.",
-            //       status: "error",
-            //       duration: 9000,
-            //       isClosable: true,
-            //       position: "top",
-            //       bg: "#ff6f61",
-            //     });
-            //   }
-            // isAuth &&
             Swal.fire({
               position: "center",
               icon: "success",
