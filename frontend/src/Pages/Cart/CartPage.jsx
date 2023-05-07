@@ -1,7 +1,7 @@
 import CartDisplayProduct from "./cart-display-product/CartDisplayProduct";
 import { useEffect, useState } from "react";
 import "./CartPage.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, json } from "react-router-dom";
 import {
   getCart,
   removeItemFromCart,
@@ -57,18 +57,14 @@ function CartPage(props) {
   }
 
   const handleOrder = () => {
-    handleOrderOpen();
-    handleOpen();
-    addOrderArr(cartItems);
-    localStorage.setItem("cartItems", JSON.stringify([]));
-    setCartItems([]);
-    setCartItemsCount(getCart().length);
+    localStorage.setItem("total",JSON.stringify(totalPrice))
+  
   };
   function calculateTotalPrice() {
     let total = 0;
     // setCartItems(getCart());
     cartItems.forEach((item) => {
-      total += parseInt(item.quantity) * item.price;
+      total += +((item.quantity)||1) * +item.price;
     });
     setTotalPrice(total);
   }
@@ -76,49 +72,6 @@ function CartPage(props) {
   useEffect(() => {
     calculateTotalPrice();
   }, [cartItems]);
-
-  //   if (cartItems.length === 0) {
-  //     return (
-  //       <>
-  //         {/* <Navigationbar /> */}
-
-  //         <div className="cart-page">
-  //           <h1>No Items In Cart</h1>
-  //           <Modal
-  //             open={orderPlaceOpen}
-  //             onClose={handleOrderClose}
-  //             aria-labelledby="simple-modal-title"
-  //             aria-describedby="simple-modal-description"
-  //           >
-  //             <div
-  //               className="orderPlaced__mastercontainer"
-  //               onClick={handleOrderClose}
-  //             >
-  //               <div
-  //                 className="orderPlacedClip__container"
-  //                 onClick={(e) => {
-  //                   e.stopPropagation();
-  //                 }}
-  //               >
-  //                 {/* <video
-  //                                 className="orderPlacedClip__clip"
-  //                                 src={orderPlacedClip}
-  //                                 autoPlay
-  //                                 loop
-  //                             ></video> */}
-  //                 <h1>Order Successfully Placed!!</h1>
-  //                 <Link to="/orders">
-  //                   <button className="orderPlacedClip__button">
-  //                     See Orders
-  //                   </button>
-  //                 </Link>
-  //               </div>
-  //             </div>
-  //           </Modal>
-  //         </div>
-  //       </>
-  //     );
-  //   }
 
   return (
     <>
@@ -130,20 +83,21 @@ function CartPage(props) {
           </div>
 
           {/* Map items here */}
-          {cartItems.map((item) =>
+          {cartItems.length? cartItems.map((item) =>
           <CartDisplayProduct
                 key={item.id}
                 id={item.id}
                 name={item.name}
-                image={item.img}
-                price={item.price}
+                image={item.image}
+                price={+item.price}
                 rating={item.rating}
-                quantity={item.quantity}
+                quantity={1}  
+                discount={item.discount}
                 handleRemove={handleRemove}
                 setCartItems={setCartItems}
               />
             
-          )}
+          ):<h1>No Items in cart</h1> }
         </div>
 
         
@@ -152,7 +106,7 @@ function CartPage(props) {
           <hr className="plane-hr" />
           <div className="cart-price">
             <h1>Price ({cartItems.length})</h1>
-            <h1>₹{totalPrice * 1.25}</h1>
+            <h1>₹{+totalPrice}</h1>
           </div>
           <div className="cart-discount">
             <h1>Discount</h1>
@@ -166,7 +120,7 @@ function CartPage(props) {
           <hr className="dashed-hr" />
           <div className="cart-total">
             <h1 className="total-amt">Total Amount</h1>
-            <h1>₹{totalPrice?totalPrice+31:0}</h1>
+            <h1>₹{totalPrice?totalPrice+8:0}</h1>
           </div>
           <div className="place-order-div">
             <NavLink to="/payments">
@@ -183,3 +137,17 @@ function CartPage(props) {
 }
 
 export default CartPage;
+
+//https://onemg-database.onrender.com/cart/cart
+
+
+// {
+  // "_id": "64553b2ff15f9ec53e7c77cf",
+  // "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/vitamin-supplement/b/2/z/90-salmon-fish-oil-omega-3-capsule-1000-mg-with-epa-180mg-and-original-imaghhwh67puse6s.jpeg?q=70",
+  // "title": "CF Salmon Fish Oil Omega 3 Capsule 1000 mg with EPA 180...",
+  // "price": 695,
+  // "rating": 4.4,
+  // "discount": 31,
+  // "category": "supplement"
+// },
+
