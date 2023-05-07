@@ -8,10 +8,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Slider from "react-slick";
-
 
 const settings = {
   dots: false,
@@ -56,35 +55,20 @@ const settings = {
 };
 
 export default function ManualCarousels({ allData, bgcolor }) {
-  // As we have used custom buttons, we need a reference variable to
-  // change the state
   const [slider, setSlider] = React.useState(null);
-
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
   const top = useBreakpointValue({ base: "37%", md: "37%" });
   const left = useBreakpointValue({ base: "0px", md: "0px" });
-
-
 
   return (
     <Center
       bgColor={"white"}
       w="100%"
-      // border="1px solid black"
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
       mt="10"
       mb="10"
       p={10}
     >
-      <Box
-        position={"relative"}
-        width={"95%"}
-        m={'auto'}
-        overflow={"hidden"}
-
-      >
-        {/* CSS files for react-slick */}
+      <Box position={"relative"} width={"95%"} m={"auto"} overflow={"hidden"}>
         <link
           rel="stylesheet"
           type="text/css"
@@ -96,7 +80,6 @@ export default function ManualCarousels({ allData, bgcolor }) {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-        {/* Left Icon */}
         <IconButton
           aria-label="left-arrow"
           color="#fff"
@@ -112,7 +95,6 @@ export default function ManualCarousels({ allData, bgcolor }) {
         >
           <IoIosArrowBack />
         </IconButton>
-        {/* Right Icon */}
         <IconButton
           aria-label="right-arrow"
           color="#fff"
@@ -127,13 +109,14 @@ export default function ManualCarousels({ allData, bgcolor }) {
         >
           <IoIosArrowForward />
         </IconButton>
-        <Box w={'95%'} m={'auto'}>
-
-
-          <Slider {...settings} ref={(slider) => setSlider(slider)}  >
+        <Box w={"95%"} m={"auto"}>
+          <Slider {...settings} ref={(slider) => setSlider(slider)}>
             {allData.map((elem) => (
               <Box key={elem.name} border={"0px solid green"}>
-                <Box style={{ cursor: "pointer" }} _hover={{ boxShadow: "xl", rounded: "md" }}>
+                <Box
+                  style={{ cursor: "pointer" }}
+                  _hover={{ boxShadow: "xl", rounded: "md" }}
+                >
                   <Image
                     style={{ display: "flex", margin: "1px auto" }}
                     src={elem.img}

@@ -24,9 +24,9 @@ const Allroutes = () => {
         <Route path="/adminaddproduct" element={<AdminAddProducts />} />
         <Route path="/adminproducts" element={<AdminProducts />} />
         <Route path="/admineditproduct/:id" element={<AdminEditProduct />} />
-        <Route path="/payments" element={<Payments/>} />
-        <Route path="/adminhome" element={<AdminHome/>}></Route>
-        <Route path="/adminorders" element={<AdminOrder/>}></Route>
+        <Route path="/payments" element={<Payments />} />
+        <Route path="/adminhome" element={<AdminHome />}></Route>
+        <Route path="/adminorders" element={<AdminOrder />}></Route>
       </Routes>
     </div>
   );

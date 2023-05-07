@@ -17,12 +17,7 @@ import {
   AccordionPanel,
   AccordionIcon,
   Image,
-  Container,
 } from "@chakra-ui/react";
-
-// {{xl:"", lg:"", md:"", sm:"", base:""}}
-
-// import Image from "next/image";
 const Footer = () => {
   return (
     <Stack bg="#fff" m="auto" w="100%" mt="10">
@@ -36,8 +31,8 @@ const Footer = () => {
           size={{ xl: "lg", lg: "40px", md: "30px", sm: "20px", base: "20px" }}
           mb={"30px"}
         >
-          Stay Healthy with MEDI Green: Your Favourite Online Pharmacy and Healthcare
-          Platform
+          Stay Healthy with MEDI Green: Your Favourite Online Pharmacy and
+          Healthcare Platform
         </Heading>
         <Text as="b" size="md" mb={"20px"}>
           We Bring Care to Health.
@@ -53,15 +48,16 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          MEDI Green is {"India's"} leading digital healthcare platform. From doctor
-          consultations on chat to online pharmacy and lab tests at home: we
-          have it all covered for you. Having delivered over 25 million orders
-          in 1000+ cities till date, we are on a mission to bring {"care"} to
+          MEDI Green is {"India's"} leading digital healthcare platform. From
+          doctor consultations on chat to online pharmacy and lab tests at home:
+          we have it all covered for you. Having delivered over 25 million
+          orders in 1000+ cities till date, we are on a mission to bring{" "}
+          {"care"} to
           {"health"} to give you a flawless healthcare experience.
         </Text>
 
         <Text as="b" size="md" mt={"20px"}>
-        MEDI Green: Your Favourite Online Pharmacy!
+          MEDI Green: Your Favourite Online Pharmacy!
         </Text>
         <Text
           mb={"10px"}
@@ -74,11 +70,11 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          MEDI Green is {"India's "}leading online chemist with over 2 lakh medicines
-          available at the best prices. We are your one-stop destination for
-          other healthcare products as well, such as over the counter
-          pharmaceuticals, healthcare devices and homeopathy and ayurveda
-          medicines.
+          MEDI Green is {"India's "}leading online chemist with over 2 lakh
+          medicines available at the best prices. We are your one-stop
+          destination for other healthcare products as well, such as over the
+          counter pharmaceuticals, healthcare devices and homeopathy and
+          ayurveda medicines.
         </Text>
         <Text
           mb={"10px"}
@@ -105,8 +101,8 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          And there is more! At MEDI Green, you can buy health products and medicines
-          online at best discounts.
+          And there is more! At MEDI Green, you can buy health products and
+          medicines online at best discounts.
         </Text>
         <Text
           mb={"10px"}
@@ -136,12 +132,13 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          At MEDI Green, our goal is to make healthcare understandable, accessible
-          and affordable in India. We set out on our journey in 2015, and have
-          come a long way since then. Along the way, we have been conferred with
-          prestigious titles like BML Munjal Award {"for 'Business"} Excellence
-          through Learning and {"Development',"} Best Online Pharmacy in India
-          Award and Top 50 venture in The Smart CEO-Startup50 India.
+          At MEDI Green, our goal is to make healthcare understandable,
+          accessible and affordable in India. We set out on our journey in 2015,
+          and have come a long way since then. Along the way, we have been
+          conferred with prestigious titles like BML Munjal Award{" "}
+          {"for 'Business"} Excellence through Learning and {"Development',"}{" "}
+          Best Online Pharmacy in India Award and Top 50 venture in The Smart
+          CEO-Startup50 India.
         </Text>
         <Text as="b" size="md" mb={"30px"}>
           The Services We Offer
@@ -157,10 +154,10 @@ const Footer = () => {
           }}
           color="#666666"
         >
-          MEDI Green is {"India's"} leading digital healthcare platform, where you
-          can buy medicines online with discount. Buy medicine online in Delhi,
-          Mumbai, Bangalore, Hyderabad, Pune, Gurgaon, Noida, Kolkata, Chennai,
-          Ahmedabad, Lucknow and around a 1000 more cities.
+          MEDI Green is {"India's"} leading digital healthcare platform, where
+          you can buy medicines online with discount. Buy medicine online in
+          Delhi, Mumbai, Bangalore, Hyderabad, Pune, Gurgaon, Noida, Kolkata,
+          Chennai, Ahmedabad, Lucknow and around a 1000 more cities.
         </Text>
         <Text
           mb={"10px"}
@@ -513,9 +510,9 @@ const Footer = () => {
                     lineHeight={"22px"}
                     color="#666666"
                   >
-                    All products displayed on MEDI Green are procured from verified
-                    and licensed pharmacies. All labs listed on the platform are
-                    accredited
+                    All products displayed on MEDI Green are procured from
+                    verified and licensed pharmacies. All labs listed on the
+                    platform are accredited
                   </Text>
                 </Box>
               </Flex>
@@ -538,9 +535,9 @@ const Footer = () => {
                     lineHeight={"22px"}
                     color="#666666"
                   >
-                    MEDI Green uses Secure Sockets Layer (SSL) 128-bit encryption and
-                    is Payment Card Industry Data Security Standard (PCI DSS)
-                    compliant
+                    MEDI Green uses Secure Sockets Layer (SSL) 128-bit
+                    encryption and is Payment Card Industry Data Security
+                    Standard (PCI DSS) compliant
                   </Text>
                 </Box>
               </Flex>
@@ -584,7 +581,6 @@ const Footer = () => {
               sm: "75px",
               base: "75px",
             }}
-            // height="100"
           />
           <Text
             as="b"
@@ -613,7 +609,6 @@ const Footer = () => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                {/* 1 */}
                 <Text as="b">Access medical and health information</Text>
                 <Text
                   fontSize={"12px"}
@@ -621,13 +616,13 @@ const Footer = () => {
                   lineHeight={"22px"}
                   color="#666666"
                 >
-                 MEDI Green provides you with medical information which is curated,
-                  written and verified by experts, accurate and trustworthy. Our
-                  experts create high-quality content about medicines, diseases,
-                  lab investigations, Over-The-Counter (OTC) health products,
-                  Ayurvedic herbs/ingredients, and alternative remedies.
+                  MEDI Green provides you with medical information which is
+                  curated, written and verified by experts, accurate and
+                  trustworthy. Our experts create high-quality content about
+                  medicines, diseases, lab investigations, Over-The-Counter
+                  (OTC) health products, Ayurvedic herbs/ingredients, and
+                  alternative remedies.
                 </Text>
-                {/* 2 */}
                 <Text as="b">Order medicines online</Text>
                 <Text
                   fontSize={"12px"}
@@ -641,7 +636,6 @@ const Footer = () => {
                   priority. All products displayed on CVAAK are procured from
                   verified and licensed pharmacies.
                 </Text>
-                {/* 3 */}
                 <Text as="b">Book lab tests</Text>
                 <Text
                   fontSize={"12px"}
@@ -654,7 +648,6 @@ const Footer = () => {
                   Enjoy free home sample collection, view reports online and
                   consult a doctor online for free.
                 </Text>
-                {/* 4 */}
                 <Text as="b">Consult a doctor online</Text>
                 <Text
                   fontSize={"12px"}

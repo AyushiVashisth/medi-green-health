@@ -12,17 +12,7 @@
   width: 50%;
 }
 
-@media screen and (max-width: 1000px) {
-  .sidebarcont {
-    /* border: 1px solid red; */
-  }
-}
-
 @media screen and (max-width: 550px) {
-  .sidebarcont {
-    /* border: 1px solid red; */
-  }
-
   .adminpagedashboardbox {
     width: 1100%;
     margin-top: 3.3cm;
@@ -30,23 +20,7 @@
   }
 }
 
-@media screen and (max-width: 1350px) {
-  .sidebarcont {
-    /* border: 1px solid red; */
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .sidebarcont {
-    /* border: 1px solid red; */
-  }
-}
-
 @media screen and (max-width: 650px) {
-  .sidebarcont {
-    /* border: 1px solid red; */
-  }
-
   .form {
     width: 80%;
     margin-top: 0.7cm;

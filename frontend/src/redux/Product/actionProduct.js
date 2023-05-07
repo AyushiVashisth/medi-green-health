@@ -5,13 +5,11 @@ export const getData = (obj) => async (dispatch) => {
   dispatch({ type: types.REQUEST_SUCCESS });
   try {
     axios
-      .get(
-        `https://onemg-database.onrender.com/vitamin`,obj)
+      .get(`https://onemg-database.onrender.com/vitamin`, obj)
       .then((res) => {
         console.log(res.data);
         dispatch({ type: types.GET_PRODUCT_REQUEST, payload: res.data });
       });
-
   } catch (error) {
     dispatch({ type: types.REQUEST_ERROR, payload: error.message });
   }
