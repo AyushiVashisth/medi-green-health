@@ -10,6 +10,7 @@ import {
 // import { useRouter } from "react-router-dom";
 import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
+import Swal from "sweetalert2";
 // import { useDispatch, useSelector } from "react-redux";
 // import { useToast } from "@chakra-ui/react";
 // import { postCartData } from "@/redux/cart/cart.action";
@@ -38,7 +39,7 @@ const ProductCard = (props) => {
         <Image
           objectFit={"contain"}
           h="100%"
-          src={props.src}
+          src={props.image}
           alt={props.id}
           // onClick={goToSingleProductPage}
           cursor="pointer"
@@ -51,10 +52,10 @@ const ProductCard = (props) => {
         // onClick={goToSingleProductPage}
         cursor="pointer"
       >
-        {props.title.substring(0, 24).concat("...")}
+        {props.title}
       </Text>
       <Text color="grey" fontSize="13px" fontWeight="600" mb="10px">
-        {props.packsize}
+        {props.category}
       </Text>
       <Flex gap={"20px"}>
         <Button
@@ -77,8 +78,17 @@ const ProductCard = (props) => {
         </Text>
       </Flex>
       <Flex gap={"10px"}>
+        <Text
+          fontSize={"13px"}
+          mb={"10px"}
+          color="red"
+          fontWeight={600}
+          textDecor="line-through"
+        >
+          {props["price"] ? `₹${props["price"] + 300}` : "0%"}
+        </Text>
         <Text fontSize={"13px"} mb={"10px"} color="#1aab2a" fontWeight={600}>
-          {props["discount-percent"] ? props["discount-percent"] : "0%"}
+          {props["discount"] ? `${props["discount"]}%` : "0%"}
         </Text>
       </Flex>
       <Flex align={"center"} justify="space-between">
@@ -94,37 +104,47 @@ const ProductCard = (props) => {
             bg: "#ff6f61",
             color: "white",
           }}
-          // onClick={() => {
-          //   if (isAuth && addText.length === 3) {
-          //     dispatch(
-          //       postCartData({
-          //         title: props.title,
-          //         src: props.src,
-          //         packsize: props.packsize,
-          //         price: props.price,
-          //         "strike-price": props["strike-price"],
-          //         "discount-percent": props["discount-percent"],
-          //         qty: 1,
-          //         rating: props.rating,
-          //         CardRatingDetail: props.CardRatingDetail,
-          //         description: props.description,
-          //         category: props.category,
-          //       })
-          //     );
-          //   }
-          //   if (!isAuth) {
-          //     toast({
-          //       title: "Product cannot be added.",
-          //       description: "Please login first.",
-          //       status: "error",
-          //       duration: 9000,
-          //       isClosable: true,
-          //       position: "top",
-          //       bg: "#ff6f61",
-          //     });
-          //   }
-          //   isAuth && setAddText("ADDED ✓");
-          // }}
+          border={"2px solid #ff6f61"}
+          onClick={() => {
+            //   if (isAuth && addText.length === 3) {
+            //     dispatch(
+            //       postCartData({
+            //         title: props.title,
+            //         src: props.src,
+            //         packsize: props.packsize,
+            //         price: props.price,
+            //         "strike-price": props["strike-price"],
+            //         "discount-percent": props["discount-percent"],
+            //         qty: 1,
+            //         rating: props.rating,
+            //         CardRatingDetail: props.CardRatingDetail,
+            //         description: props.description,
+            //         category: props.category,
+            //       })
+            //     );
+            //   }
+            //   if (!isAuth) {
+            //     toast({
+            //       title: "Product cannot be added.",
+            //       description: "Please login first.",
+            //       status: "error",
+            //       duration: 9000,
+            //       isClosable: true,
+            //       position: "top",
+            //       bg: "#ff6f61",
+            //     });
+            //   }
+            // isAuth &&
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your product has been added",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            setAddText("ADDED ✓");
+          }}
+
           // display={isAuth ? "block" : "none"}
         >
           {addText}
