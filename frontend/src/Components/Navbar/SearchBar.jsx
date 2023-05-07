@@ -15,17 +15,17 @@ import { FaSearch, FaSearchLocation } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 // const initial = "";
 function SearchBar() {
-//   const { setQuery } = useContext(SearchContext);
-//   const [searchtext, setSearchext] = useState(initial);
-//   const navigate = useNavigate();
+  //   const { setQuery } = useContext(SearchContext);
+  //   const [searchtext, setSearchext] = useState(initial);
+  //   const navigate = useNavigate();
 
-//   const handleKeyDown = (e) => {
-//     if (e.key === "Enter") {
-//       setQuery(searchtext);
-//       setSearchext("");
-//       navigate("/products");
-//     }
-//   };
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "Enter") {
+  //       setQuery(searchtext);
+  //       setSearchext("");
+  //       navigate("/products");
+  //     }
+  //   };
 
   return (
     <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff">
@@ -38,13 +38,12 @@ function SearchBar() {
         >
           <InputGroup size={"sm"} width={{ base: "90%", md: "30%" }}>
             <InputLeftAddon children={<FaSearchLocation color="gray.300" />} />
+
             <Select bg={"#f1f4f6"} focusBorderColor="#f1f4f6">
               <option value="New Delhi">New Delhi</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Bengaluru">Bengaluru</option>
-              <option value="Chennai">Chennai</option>
-              <option value="Hydrabad">Hydrabad</option>
-              <option value="Jaipur">Jaipur</option>
+              <option value="Mumbai" onClick={()=>{
+                "but"
+              }}>Your Location</option>
             </Select>
           </InputGroup>
           <InputGroup size={"sm"} width={{ base: "90%", md: "60%" }}>
@@ -52,14 +51,14 @@ function SearchBar() {
               placeholder="Search for Medical and Health Products"
               bg={"#f1f4f6"}
               focusBorderColor="#f1f4f6"
-        //       onChange={(e) => setSearchext(e.target.value)}
-        //       onKeyDown={handleKeyDown}
+            //       onChange={(e) => setSearchext(e.target.value)}
+            //       onKeyDown={handleKeyDown}
             />
             <InputRightElement
               children={<FaSearch color="green.500" />}
               pointerEvents={"auto"}
               cursor="pointer"
-        //       onClick={handleKeyDown}
+            //       onClick={handleKeyDown}
             />
           </InputGroup>
         </Flex>

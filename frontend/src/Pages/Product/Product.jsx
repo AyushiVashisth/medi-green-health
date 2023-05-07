@@ -8,6 +8,7 @@ import { Box, Grid } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "./Pagination";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const Products = () => {
   const loading = useSelector((store) => store.ProductReducer.isLoading);
@@ -23,42 +24,20 @@ const Products = () => {
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
+  const location=useLocation()
+const [searchParams,setSearchParams]=useSearchParams()
+  
+useEffect(()=>{
+  let obj={
+    params:{
+        category:searchParams.getAll("category"),     
+        sortBy:"price",
+        order:searchParams.get("sort"),
+    }
+  }
+  dispatch(getData(obj))  
+},[location.search])
 
-  const handleSortPrice = (value1,value2) => {
-    setSort(value1);
-    setOrder(value2);
-  };
-  const handleSortRating = (value1,value2) => {
-    setSort(value1);
-    setOrder(value2);
-  };
-  const handleSortReset = () => {
-    setSort("");
-    setOrder("");
-    dispatch(getData("", ""));
-  };
-
-  const handleFilter = (value) => {
-    dispatch(getData({ category: value, sortBy: order, order }));
-  };
-  useEffect(() => {
-    const params = {
-      category: filterValues,
-      sortBy: sort,
-      order,
-    };
-    dispatch(getData(params));
-  }, [filterValues, sort, order]);
-  // useEffect(() => {
-  //   const params ={
-  //     sortBy: sort,
-  //     order: order,
-
-  //   };
-
-  //   dispatch(getData(params));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [sort,order]);
 
   return (
     <>
@@ -68,10 +47,7 @@ const Products = () => {
         bg="#f6f6f6"
       >
         <FilterAndSort
-          handleFilter={handleFilter}
-          handleSortPrice={handleSortPrice}
-          handleSortRating={handleSortRating}
-          handleSortReset={handleSortReset}
+         
         />
 
         <Box className="allProductSection" p={{ base: "20px" }}>

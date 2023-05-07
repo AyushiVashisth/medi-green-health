@@ -21,8 +21,8 @@ const SingalProductPage = () => {
 
     return (
         <DIV>
-      
-            
+
+
             <Grid templateColumns={{
                 xl: "repeat(3, 1fr)",
                 lg: "repeat(3, 1fr)",
@@ -32,27 +32,27 @@ const SingalProductPage = () => {
                 gap="20px 20px"
                 mt="30px" >
                 <Box id="image" >
-                <div style={{"width":"300px","height":"200px"}}>
-            <div width="80%">
-                <ReactImageMagnify {...{
-                    smallImage: {
-                        alt: {title},
-                        isFluidWidth: true,
-                        src: image,
-                        width: 140,
-                        height: 180
-                    },
-                    largeImage: {
-                        src: image,
-                        width: 400,
-                        height: 500,
-                        
-                    },
-                    enlargedImageContainerStyle:{width:"100%",height:"100%",backgroundSize:"cover"},
-                    lensStyle:{backgroundColor:`rgba(0,0,0,0.3)`}
-                }} />
-            </div>
-            </div>
+                    <div style={{ "width": "300px", "height": "200px" }}>
+                        <div width="80%">
+                            <ReactImageMagnify {...{
+                                smallImage: {
+                                    alt: { title },
+                                    isFluidWidth: true,
+                                    src: image,
+                                    width: 140,
+                                    height: 180
+                                },
+                                largeImage: {
+                                    src: image,
+                                    width: 400,
+                                    height: 500,
+
+                                },
+                                enlargedImageContainerStyle: { width: "100%", height: "100%", backgroundSize: "cover" },
+                                lensStyle: { backgroundColor: `rgba(0,0,0,0.3)` }
+                            }} />
+                        </div>
+                    </div>
 
                 </Box >
                 <Box w={"300px"} h={"300px"} borderRadius={"10px"} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}>

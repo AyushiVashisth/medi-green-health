@@ -19,46 +19,49 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
-const FilterAndSort = ({
-  handleFilter,
-  handleSortPrice,
-  handleSortRating,
-  handleSortReset,
-}) => {
+const FilterAndSort = () => {
   const btnRef = React.useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const dispatch = useDispatch();
-  const [filterValues, setFilterValues] = useState([]);
-  const [rating, setRating] = useState("");
-  const [order, setOrder] = useState("");
-  
-  const handleFilterChange = (value) => {
-    setFilterValues(value);
-    handleFilter("category",value)
-  };
+  const [searchParams, setSearchParams] = useSearchParams();
+  //filter by Category
+  let intialCategory = searchParams.getAll("category");
+  let [category, setCategory] = useState(intialCategory || []);
 
-  const handleReset = () => {
-    dispatch(getData("", "", []));
-  };
+  const handleChange = (e) => {
+    let arr = [...category];
+    const value = e.target.value;
+    if (arr.includes(value)) {
+      arr = arr.filter((el) => el != value)
+    } else {
+      arr.push(value)
+    }
+    setCategory(arr)
+  }
 
-  const handleSort = (value) => {
-    setOrder(value);
-    handleSortPrice("price",value);
-  };
+console.log(category)
+//sorting
+const initialSort = searchParams.get("sort");
+console.log(initialSort);
+const [sort, setSort] = useState(initialSort || "");
+const handleSort = (e) => {
+  let val = e.target.value;
+  val == sort ? setSort(null) : setSort(val);
+  // setSort(e.target.value)
+};
+useEffect(()=>{
+  if(category||sort){
+    let params={};
+    category && (params.category=category)
+    sort &&(params.sort=sort)
+    setSearchParams(params)
+  }
+},[category,sort])
 
-  const handleRating = (value) => {
-    setRating(value);
-    handleSortRating("rating",value);
-  };
 
-  useEffect(() => {
-    handleSortPrice("price",order);
-  }, [order]);
 
-  useEffect(() => {
-    handleSortRating("rating",rating);
-  }, [rating]);
+
 
   return (
     <>
@@ -75,23 +78,56 @@ const FilterAndSort = ({
           <Heading fontSize={"14px"} textAlign={"left"}>
             FILTER
           </Heading>
-          <CheckboxGroup
-            colorScheme="green"
-            value={filterValues}
-            onChange={handleFilterChange}
-          >
+          {/* <CheckboxGroup
+            colorScheme="green"          
+           
+            onChange={handleChange}
+          > */}
             <Stack color={"grey"} spacing={[1, 1]} direction={["column"]}>
-              <Checkbox fontSize="10px" value="calcium">
-                Calcium
-              </Checkbox>
-              <Checkbox value="supplement">Suppliments</Checkbox>
-              <Checkbox value="aryurvedic">Ayurvedic</Checkbox>
-              <Checkbox value="mask">Masks</Checkbox>
+              <Box >
+
+              <input type="checkbox" checked={category.includes("calcium")} value={"calcium"} onChange={handleChange}/>calcium
+              </Box>
+              <Box>
+
+              <input type="checkbox" checked={category.includes("supplement")} value={"supplement"} onChange={handleChange}/>supplement
+              </Box>
+              <Box>
+
+              <input type="checkbox" checked={category.includes("aryurvedic")} value={"aryurvedic"} onChange={handleChange}/>aryurvedic
+              </Box>
+              <Box>
+
+              <input type="checkbox" checked={category.includes("mask")} value={"mask"} onChange={handleChange}/>mask
+              </Box>
+              
             </Stack>
-          </CheckboxGroup>
+          {/* </CheckboxGroup> */}
         </Box>
+        <h2 id="heading">Sort By Price</h2>
+      <div style={{ padding: "7px" }}>
+        <input
+          className="inp"
+          type="checkbox"
+          checked={sort == "asc"}
+          value={"asc"}
+          onChange={handleSort}
+        />
+        <label className="inpLabel">Low to High</label>
+      </div>
+
+     
+      
+      <div style={{ padding: "7px" }}><input
+        className="inp"
+        type="checkbox"
+        checked={sort == "desc"}
+        value={"desc"}
+        onChange={handleSort}
+      />
+      <label className="inpLabel">High to Low</label></div>
         <Divider />
-        <Box m="20px 0">
+        {/* <Box m="20px 0">
           <Heading fontSize={"14px"} textAlign={"left"}>
             SORT BY PRICE
           </Heading>
@@ -105,10 +141,10 @@ const FilterAndSort = ({
               <Radio value="desc">High to low</Radio>
             </Stack>
           </RadioGroup>
-        </Box>
+        </Box> */}
         <Divider />
         <Box m="20px 0">
-          <Heading fontSize={"14px"} textAlign={"left"}>
+          {/* <Heading fontSize={"14px"} textAlign={"left"}>
             SORT BY RATING
           </Heading>
           <RadioGroup
@@ -120,9 +156,9 @@ const FilterAndSort = ({
                 <Radio value="asc">Low to high</Radio>
                 <Radio value="des">High to low</Radio>
               </Stack>
-            </RadioGroup>
-          </Box>
-          <Button
+            </RadioGroup> */}
+        </Box>
+        {/* <Button
             fontWeight={"700"}
             bg="white"
             size={"sm"}
@@ -141,13 +177,13 @@ const FilterAndSort = ({
             }}
           >
             Reset
-          </Button>
-        </Box>
+          </Button> */}
+      </Box>
       {/* </Show> */}
 
       {/* -------------------- */}
 
-      <Hide above="sm">
+      {/* <Hide above="sm">
         <>
           <Button ref={btnRef} colorScheme="gray" onClick={onOpen}>
             Filter and Sort
@@ -234,7 +270,7 @@ const FilterAndSort = ({
             </DrawerContent>
           </Drawer>
         </>
-      </Hide>
+      </Hide> */}
     </>
   );
 };
