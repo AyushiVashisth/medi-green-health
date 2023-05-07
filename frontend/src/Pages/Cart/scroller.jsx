@@ -48,7 +48,7 @@ export const Scroller = () => {
     },
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/1989fc8a41aa4bc4880e8b6094a2200e.jpg",
-      title: "Dabur GlycoDab Tablet",
+      title: "Dabur GlycoDab Tablet Giloy Neem Juice with Tulsi",
       MRP: "₹360",
       price: " ₹270",
       discount: "25%",
@@ -65,7 +65,7 @@ export const Scroller = () => {
     },
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/69199e6a4d99439fb23db417b156b68f.jpg",
-      title: "Dabur Giloy Neem Juice with Tulsi",
+      title: "Dabur Giloy Neem Juice with Tulsi, Giloy Neem Juice with Tulsi  ",
       MRP: "₹100",
       price: " ₹90",
       discount: "10%",
@@ -91,6 +91,8 @@ export const Scroller = () => {
           position: "relative",
           marginTop: "32px",
           boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+          width:"90%",
+          margin:"auto"
         }}
       >
         <Carousel responsive={responsive}>
@@ -145,8 +147,9 @@ const DIV = styled.div`
   .heading-home-page {
     margin-top: 52px;
     display: flex;
-    font-size: 27px;
+    font-size: 35px;
     font-weight: 700;
+    margin-left:7%
   }
   .div-1 {
   }
