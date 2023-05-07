@@ -1,7 +1,6 @@
 import "./App.css";
 import Footer from "./Components/Footer";
 import Allroutes from "./Pages/Allroutes";
-import Login from "./Pages/Login";
 
 function App() {
   return (
