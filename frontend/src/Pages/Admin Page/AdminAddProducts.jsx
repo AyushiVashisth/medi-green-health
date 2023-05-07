@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import "./AdminAddproducts.css";
 
-
 const AdminAddProducts = () => {
   const [image,setImage] = useState("");
   const [title,setTitle] = useState("");
