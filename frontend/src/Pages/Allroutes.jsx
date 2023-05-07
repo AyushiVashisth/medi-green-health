@@ -9,6 +9,8 @@ import CartPage from "./Cart/CartPage";
 
 import Payments from "./Payment/Payments";
 import Home from "./Home";
+import AdminOrder from "./Admin Page/AdminOrder";
+import AdminHome from "./Admin Page/AdminHome";
 
 
 
@@ -22,8 +24,10 @@ const Allroutes = () => {
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminaddproduct" element={<AdminAddProducts />} />
         <Route path="/adminproducts" element={<AdminProducts />} />
-        <Route path="/admineditproduct" element={<AdminEditProduct />} />
+        <Route path="/admineditproduct/:id" element={<AdminEditProduct />} />
         <Route path="/payments" element={<Payments/>} />
+        <Route path="/adminhome" element={<AdminHome/>}></Route>
+        <Route path="/adminorders" element={<AdminOrder/>}></Route>
       </Routes>
     </div>
   );
