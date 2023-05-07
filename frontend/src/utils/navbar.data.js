@@ -23,6 +23,10 @@ const NAV_ITEMS = [
     label: "CARE PLAN",
     href: "#",
   },
+  {
+    label: "ADMIN",
+    href: "/adminlogin",
+  },
 ];
 
 const AUTH_ITEMS = [
