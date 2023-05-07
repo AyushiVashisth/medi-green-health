@@ -6,13 +6,11 @@ import AdminAddProducts from "./Admin Page/AdminAddProducts";
 import AdminProducts from "./Admin Page/AdminProducts";
 import AdminEditProduct from "./Admin Page/AdminEditProduct";
 import CartPage from "./Cart/CartPage";
-
 import Payments from "./Payment/Payments";
 import Home from "./Home";
+import SingalProductPage from "./Product/SingalProductPage";
 import AdminOrder from "./Admin Page/AdminOrder";
 import AdminHome from "./Admin Page/AdminHome";
-
-
 
 const Allroutes = () => {
   return (
@@ -20,6 +18,7 @@ const Allroutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<SingalProductPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminaddproduct" element={<AdminAddProducts />} />
