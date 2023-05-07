@@ -12,7 +12,7 @@ const AdminSidebar = () => {
   return (
     <Box className="sidebar" backgroundColor={"#051e3e"}>
       <Flex className="adminsidebar">
-        <Link to={"/admin"}>
+        <Link to={"/adminhome"}>
           <Flex
             className="three"
             justifyContent={"space-evenly"}
@@ -81,7 +81,7 @@ const AdminSidebar = () => {
             </Box>
           </Flex>
         </Link>
-        <Link to="/adminaddproducts">
+        <Link to="/adminaddproduct">
           <Flex
             className="three"
             justifyContent={"space-evenly"}

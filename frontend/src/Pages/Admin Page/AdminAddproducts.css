@@ -1,6 +1,5 @@
 .sidebarcont {
   width: 18%;
-  border: 1px solid red;
 }
 
 .adminpagedashboardbox {
@@ -15,13 +14,13 @@
 
 @media screen and (max-width: 1000px) {
   .sidebarcont {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 }
 
 @media screen and (max-width: 550px) {
   .sidebarcont {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 
   .adminpagedashboardbox {
@@ -33,19 +32,19 @@
 
 @media screen and (max-width: 1350px) {
   .sidebarcont {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 }
 
 @media screen and (max-width: 1024px) {
   .sidebarcont {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 }
 
 @media screen and (max-width: 650px) {
   .sidebarcont {
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 
   .form {
