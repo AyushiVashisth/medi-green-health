@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Carousalsignup from "../Components/CarousalSignup";
 
 import {
@@ -18,7 +18,10 @@ import {
   Box,
   useToast,
 } from "@chakra-ui/react";
-
+import { loca420 } from "../redux/User/action";
+import { useDispatch } from 'react-redux'
+import axios from "axios";
+import Swal from "sweetalert2";
 const Signup = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [name, setname] = useState("");
@@ -26,41 +29,51 @@ const Signup = () => {
   const [password, setpassword] = useState("");
   const [loading, setloading] = useState(false);
   const toast = useToast();
-
+  const dispatch = useDispatch()
   const Handleregister = () => {
     setloading(true);
     const user = {
       name,
       email,
       password,
-    };
-    fetch("https://onemg-database.onrender.com/users/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
 
-        if (res) {
-          toast({
-            title: "Registration Successful.",
-            description: "Thank You For Registration",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
-          });
-          setloading(false);
-          onClose();
-        }
-      })
-      .catch((err) => {
-        alert("SomeError occured");
-        setloading(false);
+    };
+    axios.post("https://onemg-database.onrender.com/users/register", user).then((res) => {
+      toast({
+        title: `${res.data.msg}`,
+        description: "Thank You For Registration",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
       });
+    })
+    // fetch("https://onemg-database.onrender.com/users/register", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(user),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res);
+
+    //     if (res) {
+    //       toast({
+    //         title: "Registration Successful.",
+    //         description: "Thank You For Registration",
+    //         status: "success",
+    //         duration: 5000,
+    //         isClosable: true,
+    //       });
+    //       setloading(false);
+    //       onClose();
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     alert("SomeError occured");
+    //     setloading(false);
+    //   });
   };
   return (
     <>
@@ -110,7 +123,7 @@ const Signup = () => {
                   </Box>
                 </Box>
                 <Button
-                  isLoading={loading}
+                  // isLoading={loading}
                   colorScheme="red"
                   variant="solid"
                   w="90%"
