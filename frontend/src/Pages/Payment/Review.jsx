@@ -9,8 +9,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-const total=JSON.parse(localStorage.getItem("total"))
-console.log(total)
+
 const products = [...cartItems, { title: "Shipping", desc: "", price: "30" }];
 console.log(products);
 const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
@@ -22,6 +21,8 @@ const payments = [
 ];
 
 export default function Review() {
+  const [total,setTotal]=useState(JSON.parse(localStorage.getItem("total")))
+console.log(total)
   const [addressData, setAddresData] = useState({
     firstName: "",
     lastName: "",
@@ -66,7 +67,7 @@ export default function Review() {
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            ₹{+total+30}
+            ₹{+total}
           </Typography>
         </ListItem>
       </List>

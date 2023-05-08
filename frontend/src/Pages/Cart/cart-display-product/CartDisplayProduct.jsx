@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./CartDisplayProduct.css";
-import { addItemQuantity, getCart, reduceItemQuantity } from "./useHandleCart";
+import { addItemQuantity, reduceItemQuantity } from "./useHandleCart";
 import { Link } from "react-router-dom";
 import { UpdateCart } from "../../../redux/CartRouter/actionCart";
+import { useDispatch } from "react-redux";
 
 function CartDisplayProduct(props) {
   const [quantity, setQuantity] = useState(props.quantity);
@@ -11,27 +12,33 @@ function CartDisplayProduct(props) {
   const seller = " MediGreen ";
   const { id, name, image, price, rating,setState, handleRemove, calculateTotalPrice ,item} =
     props;
-
+const dispatch=useDispatch()
   function handleReduce() {
     UpdateCart(item,-1,item._id)
     setState((prev)=>!prev)
+    setQuantity(quantity-1)
     // if (quantity > 1) {
     //   setQuantity(quantity - 1);
     // }
     // reduceItemQuantity(id);
     // props.setCartItems(getCart());
-    // calculateTotalPrice();
+   
+    
   }
+
 
   function handleAdd() {
     UpdateCart(item,1,item._id)
     setState((prev)=>!prev)  
-    // calculateTotalPrice();
+   setQuantity(quantity+1)
   }
 
   if (quantity === 0) {
     return null;
   }
+
+  
+ 
   return (
     <div className="single-cart-product-card">
       <div className="cart-card-flex">

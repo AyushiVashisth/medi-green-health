@@ -1,5 +1,5 @@
 import CartDisplayProduct from "./cart-display-product/CartDisplayProduct";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./CartPage.css";
 import { Link, NavLink, json } from "react-router-dom";
 import {
@@ -16,7 +16,6 @@ import axios from "axios";
 
 function CartPage(props) {
   const cartItemst = getCart();
-
   const cart = useSelector((store) => store.CartReducer)
   const dispatch = useDispatch()
   const [cartItems, setCartItems] = useState([]);
@@ -62,7 +61,7 @@ function CartPage(props) {
 
   const handleOrder = () => {
     localStorage.setItem("total", JSON.stringify(totalPrice))
-
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
   };
   function calculateTotalPrice() {
     let total = 0;
@@ -84,17 +83,19 @@ const getData=async()=>{
   })
     .then((res) => {
       setCartItems(res.data)
-      
+      console.log(cartItems)
+      //calculateTotalPrice()
+     
     }).then(()=>{
-
       calculateTotalPrice()
+      console.log("from callback",totalPrice)
     })
    
 }
   useEffect(() => {
         getData()
    
-  }, [state]);
+  }, [state,cartItems.length,totalPrice]);
 
   return (
     <>
@@ -119,6 +120,7 @@ const getData=async()=>{
               handleRemove={handleRemove}
               setCartItems={setCartItems}
               setState={setState}
+              calculateTotalPrice={calculateTotalPrice}
               item={item}
             />
 
