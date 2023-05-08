@@ -23,7 +23,6 @@ import {
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import Navbar1 from "../../Components/Navbar/Navbar1";
-import HomeNavbar from "../../Components/Navbar/HomeNavbar";
 import {
   healthCare_device,
   second,
@@ -50,7 +49,6 @@ const SingalProductPage = () => {
   return (
     <>
       <Navbar1 />
-      <HomeNavbar />
       <DIV>
         <Stack
           direction={{ lg: "row", md: "column", base: "column" }}

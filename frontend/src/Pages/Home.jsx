@@ -1,10 +1,8 @@
 import { Box, Center, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import Slider from "react-slick";
-import Navbar1 from "../Components/Navbar/Navbar1";
-import SearchBar from "../Components/Navbar/SearchBar";
-import Navbar2 from "../Components/Navbar/Navbar2";
 import Maped from "../Components/Caraousel/Maped";
+import Navbar1 from "../Components/Navbar/Navbar1";
 const settings = {
   dots: false,
   arrows: false,
@@ -32,9 +30,7 @@ const Home = () => {
   ];
   return (
     <Box>
-      <Navbar1 />
-      <SearchBar />
-      <Navbar2 />
+    <Navbar1/>
       <Box pt={"5px"} w={"100%"} m={"auto"}>
         <Grid
           templateColumns={{ base: "100% 0%", md: "100%% 0%", lg: "70% 30%" }}

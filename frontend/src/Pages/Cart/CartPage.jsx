@@ -9,11 +9,10 @@ import {
 } from "./cart-display-product/useHandleCart";
 import { Modal } from "@chakra-ui/react";
 import { Scroller } from "./scroller";
-
+import Navbar1 from "../../Components/Navbar/Navbar1";
 
 function CartPage(props) {
   const cartItemst = getCart();
-  
 
   const [cartItems, setCartItems] = useState(getCart() || []);
   const [cartItemsCount, setCartItemsCount] = useState(cartItemst.length);
@@ -57,14 +56,13 @@ function CartPage(props) {
   }
 
   const handleOrder = () => {
-    localStorage.setItem("total",JSON.stringify(totalPrice))
-  
+    localStorage.setItem("total", JSON.stringify(totalPrice));
   };
   function calculateTotalPrice() {
     let total = 0;
     // setCartItems(getCart());
     cartItems.forEach((item) => {
-      total += +((item.quantity)||1) * +item.price;
+      total += +(item.quantity || 1) * +item.price;
     });
     setTotalPrice(total);
   }
@@ -75,32 +73,34 @@ function CartPage(props) {
 
   return (
     <>
-      <div className="cart-page" >
+    <Navbar1/>
+      <div className="cart-page">
         <div className="cart-page-left">
           <div className="cart-page-left-header">
             <h1>My Cart({cartItems.length})</h1>
-            
           </div>
 
           {/* Map items here */}
-          {cartItems.length? cartItems.map((item) =>
-          <CartDisplayProduct
+          {cartItems.length ? (
+            cartItems.map((item) => (
+              <CartDisplayProduct
                 key={item.id}
                 id={item.id}
                 name={item.name}
                 image={item.image}
                 price={+item.price}
                 rating={item.rating}
-                quantity={1}  
+                quantity={1}
                 discount={item.discount}
                 handleRemove={handleRemove}
                 setCartItems={setCartItems}
               />
-            
-          ):<h1>No Items in cart</h1> }
+            ))
+          ) : (
+            <h1>No Items in cart</h1>
+          )}
         </div>
 
-        
         <div className="cart-page-right">
           <h1 className="cart-price-details">PRICE DETAILS</h1>
           <hr className="plane-hr" />
@@ -110,17 +110,17 @@ function CartPage(props) {
           </div>
           <div className="cart-discount">
             <h1>Discount</h1>
-            <h1 className="disc">-₹{totalPrice?25:0}</h1>
+            <h1 className="disc">-₹{totalPrice ? 25 : 0}</h1>
           </div>
           <div className="cart-delivery-charges">
             <h1>Delivery Charges</h1>
-            <h1 className="disc">₹ {totalPrice?33:0}</h1>
+            <h1 className="disc">₹ {totalPrice ? 33 : 0}</h1>
           </div>
 
           <hr className="dashed-hr" />
           <div className="cart-total">
             <h1 className="total-amt">Total Amount</h1>
-            <h1>₹{totalPrice?totalPrice+8:0}</h1>
+            <h1>₹{totalPrice ? totalPrice + 8 : 0}</h1>
           </div>
           <div className="place-order-div">
             <NavLink to="/payments">
@@ -131,7 +131,9 @@ function CartPage(props) {
           </div>
         </div>
       </div>
-     <div><Scroller  /></div>
+      <div>
+        <Scroller />
+      </div>
     </>
   );
 }
@@ -140,14 +142,12 @@ export default CartPage;
 
 //https://onemg-database.onrender.com/cart/cart
 
-
 // {
-  // "_id": "64553b2ff15f9ec53e7c77cf",
-  // "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/vitamin-supplement/b/2/z/90-salmon-fish-oil-omega-3-capsule-1000-mg-with-epa-180mg-and-original-imaghhwh67puse6s.jpeg?q=70",
-  // "title": "CF Salmon Fish Oil Omega 3 Capsule 1000 mg with EPA 180...",
-  // "price": 695,
-  // "rating": 4.4,
-  // "discount": 31,
-  // "category": "supplement"
+// "_id": "64553b2ff15f9ec53e7c77cf",
+// "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/vitamin-supplement/b/2/z/90-salmon-fish-oil-omega-3-capsule-1000-mg-with-epa-180mg-and-original-imaghhwh67puse6s.jpeg?q=70",
+// "title": "CF Salmon Fish Oil Omega 3 Capsule 1000 mg with EPA 180...",
+// "price": 695,
+// "rating": 4.4,
+// "discount": 31,
+// "category": "supplement"
 // },
-

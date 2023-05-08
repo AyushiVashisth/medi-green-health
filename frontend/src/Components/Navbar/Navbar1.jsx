@@ -25,13 +25,14 @@ import { AuthContext } from "../../Context/AuthContext";
 import Logout from "../Login/Login";
 import Login from "../Login/Login";
 import Signup from "../Signup";
+import HomeNavbar from "./HomeNavbar";
 
 export default function Navbar1() {
   const { isOpen, onToggle, onOpen, isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
-    <Box position={"sticky"} top={0} >
+    <Box position={"sticky"} top={0} zIndex={100}>
       <Flex
         bgColor={"white"}
         color={useColorModeValue("gray.900")}
@@ -168,6 +169,7 @@ export default function Navbar1() {
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
+      <HomeNavbar/>
     </Box>
   );
 }
