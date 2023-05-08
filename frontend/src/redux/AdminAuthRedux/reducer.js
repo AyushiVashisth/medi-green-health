@@ -1,7 +1,7 @@
 import { LOGINFAILEDSTATUS, LOGINREQUESTSTATUS, LOGINSUCCESSSTATUS } from "./actiontype"
 
 const initState = {
- isAuth:false,
+ adminisAuth:false,
  token:"",
  isLoading:"",
  isError:"",
@@ -13,7 +13,7 @@ export const reducer = (state=initState,{type,payload}) =>{
             return {...state,isLoading:true}
         }
         case LOGINSUCCESSSTATUS : {
-            return {...state,isLoading:false,isAuth:true,token:payload}
+            return {...state,isLoading:false,adminisAuth:true,token:payload}
         }
         case LOGINFAILEDSTATUS : {
             return {...state,isLoading:false,isError:true}

@@ -16,6 +16,8 @@ import { AiFillStar } from "react-icons/ai";
 import AdminSidebar from '../../Components/AdminSidebar';
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, get_products } from '../../redux/admincrud/action';
+import Navbar1 from '../../Components/Navbar/Navbar1';
+import Navbar2 from '../../Components/Navbar/Navbar2';
 
 
 
@@ -53,6 +55,9 @@ const AdminProducts = () => {
     dispatch(get_products);
   },[])
   return (
+    <Box>
+      <Navbar1/>
+      <Navbar2/>
     <Box>
       <Box><AdminSidebar/></Box>
     <Box w="80%" ml="20%" >
@@ -126,7 +131,7 @@ const AdminProducts = () => {
                     textDecor="line-through"
                     fontWeight={600}
                   >
-                   {item.price+item.price*Number(item.discount)/100}
+                   {Math.floor(item.price+item.price*Number(item.discount)/100)}
                   </Text>
 
                   <Text fontSize={"13px"} mb={"10px"} color="#1aab2a" fontWeight={600}>
@@ -173,6 +178,7 @@ const AdminProducts = () => {
   </Grid>
 
     
+    </Box>
     </Box>
     </Box>
   )

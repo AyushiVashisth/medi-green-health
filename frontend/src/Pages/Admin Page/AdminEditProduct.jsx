@@ -6,12 +6,15 @@ import {
   Button,
   FormControl,
   FormLabel,
+  useToast
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
 import { patchProduct } from "../../redux/admincrud/action";
+import Navbar1 from "../../Components/Navbar/Navbar1";
+import Navbar2 from "../../Components/Navbar/Navbar2";
 
 const initialState ={
   image:"",
@@ -25,6 +28,9 @@ const initialState ={
 const AdminEditProduct = () => {
   const {id} = useParams();
   const [product, setProduct] = useState(initialState);
+  const dispatch =useDispatch();
+  const toast  = useToast();
+  const navigate = useNavigate();
  
 
 
@@ -36,25 +42,38 @@ const AdminEditProduct = () => {
   })
   // console.log(singleproduct)
 
-  // useEffect(()=>{
-  //   const data = singleproduct.find((ele)=> ele._id === id)
-  //   setProduct(data);
-  // },[])
+  useEffect(()=>{
+    const data = singleproduct.find((ele)=> ele._id === id)
+    setProduct(data);
+  },[])
 
 
   const handleChange = (e) =>{
-    // const {name,value} = e.target;
-    //  setProduct((prev) => {
-    //   return {...prev,[name]:value}
-    //  })
+    const {name,value} = e.target;
+     setProduct((prev) => {
+      return {...prev,[name]:value}
+     })
   }
 
   const handleEdit = (e) =>{
     e.preventDefault();
-    // dispatchEvent(patchProduct(product,id));
+    dispatch(patchProduct(product,id)).then((res)=>{
+      toast({
+        title: "product Updated.",
+        description: "Product is Updated in database.",
+        status: "success",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+      navigate("/adminproducts");
+    })
   }
 
   return (
+    <Box>
+      <Navbar1/>
+      <Navbar2/>
     <Box>
       <Flex className="addproductpagecontainer" justifyContent={"space-evenly"}>
         <Box className="sidebarcont"><AdminSidebar/></Box>
@@ -137,6 +156,7 @@ const AdminEditProduct = () => {
           </Box>
         </Box>
       </Flex>
+    </Box>
     </Box>
   );
 };
