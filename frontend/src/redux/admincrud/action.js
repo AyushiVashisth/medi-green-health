@@ -52,14 +52,14 @@ export const deleteProduct = (id) =>  (dispatch) => {
 
 
 
-// export const patchProduct = (data,id)=>  (dispatch)=>{
-//     dispatch({type:PRODUCTREQUESTSTATUS})
-//     return axios.patch(`https://onemg-database.onrender.com/vitamin/delete/${id}`,data).then((res)=>{
-//       console.log(res)
-//       dispatch({type:PATCHPRODUCTSUCCESS,payload:res.data})
-//     }).catch((err)=>console.log(err))
+export const patchProduct = (data,id)=>  (dispatch)=>{
+    dispatch({type:PRODUCTREQUESTSTATUS})
+    return axios.patch(`https://onemg-database.onrender.com/vitamin/update/${id}`,data).then((res)=>{
+      // console.log(res)
+      dispatch({type:PATCHPRODUCTSUCCESS,payload:res.data})
+    }).catch((err)=>console.log(err))
   
-//   }
+  }
 
 
 

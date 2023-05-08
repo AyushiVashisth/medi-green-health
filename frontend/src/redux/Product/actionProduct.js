@@ -14,7 +14,7 @@ export const getData = (obj) => async (dispatch) => {
       console.log(res.data)
       dispatch({ type: types.GET_PRODUCT_REQUEST, payload: res.data });
     })
-    console.log("p", params);
+    // console.log("p", params);
    
 
   } catch (error) {

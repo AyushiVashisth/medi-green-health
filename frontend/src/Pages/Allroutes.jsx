@@ -11,6 +11,8 @@ import Payments from "./Payment/Payments";
 import Home from "./Home";
 import AdminOrder from "./Admin Page/AdminOrder";
 import AdminHome from "./Admin Page/AdminHome";
+import AdminUsers from "./Admin Page/AdminUsers";
+import AdminSettings from "./Admin Page/AdminSetting";
 
 
 
@@ -28,6 +30,8 @@ const Allroutes = () => {
         <Route path="/payments" element={<Payments/>} />
         <Route path="/adminhome" element={<AdminHome/>}></Route>
         <Route path="/adminorders" element={<AdminOrder/>}></Route>
+        <Route path="/adminuser" element={<AdminUsers/>}></Route>
+        <Route path="/adminsetting" element={<AdminSettings/>}></Route>
       </Routes>
     </div>
   );
