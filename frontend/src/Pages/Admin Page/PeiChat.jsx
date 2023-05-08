@@ -63,10 +63,10 @@ export function Piechart() {
   }, []);
 
   return (
-    <Box ml={["3", "", "200", "250"]}>
+    <Box ml={["3", "3", "110", "250"]}>
       <SimpleGrid
         fontWeight={"bold"}
-        width={["100%", "100%", "70%", "100%"]}
+        width={["370px", "100%", "90%", "100%"]}
         margin={"auto"}
         columns={[1, 1, 1, 4]}
         borderRadius="36px"
@@ -74,7 +74,7 @@ export function Piechart() {
         alignItems="center"
         gap={["", "", "", "700px"]}
       >
-        <Box ml={["", "", "", "130px"]}>
+        <Box ml={["20px", "20px", "150px", "130px"]}>
           <PieChart width={380} height={400} >
             <Pie
             
@@ -90,7 +90,7 @@ export function Piechart() {
             <Tooltip />
           </PieChart>
         </Box>
-        <Box>
+        <Box ml={["1px", "20px", "120px", "130px"]} >
           <LineChart1 />
         </Box>
       </SimpleGrid>

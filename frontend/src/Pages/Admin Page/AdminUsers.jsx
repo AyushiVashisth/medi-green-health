@@ -33,7 +33,7 @@ const AdminUsers = () => {
     );
   }
   function deleteItem(id) {
-    fetch(`https://onemg-database.onrender.com/users/${id}`, {
+    fetch(`https://onemg-database.onrender.com/users/delete/${id}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((res) => {
@@ -52,9 +52,9 @@ const AdminUsers = () => {
         <Box>
           <AdminSidebar />
         </Box>
-        <Box w="85%" ml="20%" >
-          <TableContainer w="99%" >
-            <Table size="sm" ml={2} w={"80%"}>
+        <Box w={["80%","","85%"]} ml={["0%","","20%"]} >
+          <TableContainer w={"99%"} >
+            <Table fontSize={["xs","","sm"]} ml={2} w={"80%"} mt={["5rem","","0%"]}>
               <Thead >
                 <Tr>
                   <Th>Users</Th>
