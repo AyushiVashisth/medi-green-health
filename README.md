@@ -8,9 +8,9 @@
 
 <br/>
 
-### Frontend Deployed URL 👉 [Click here]()
+### Frontend Deployed URL 👉 [Click here](https://medigreen.netlify.app/)
 
-### Backend API 👉 [Click here]()
+### Backend API 👉 [Click here](https://onemg-database.onrender.com)
 
 <br/>
 
@@ -152,7 +152,7 @@ On this journey we faced many issues, but we keep motivated each other with pati
 
 # Contributing
 
-### We welcome contributions to the Lenskart Clone website. If you have an idea for a new feature or have found a bug, please open an issue in the repository.
+### We welcome contributions to the 1mg Clone website. If you have an idea for a new feature or have found a bug, please open an issue in the repository.
 
 <br/>
 
