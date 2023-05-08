@@ -160,7 +160,7 @@ export default function Navbar1() {
             cursor="pointer"
             display={{ base: "none", md: "none", lg: "flex" }}
           >
-            <Link to="/adminaddproduct">Need Help?</Link>
+            Need Help?
           </Text>
         </Flex>
       </Flex>
