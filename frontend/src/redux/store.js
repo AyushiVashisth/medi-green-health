@@ -8,13 +8,15 @@ import ProductReducer from "./Product/reducerProduct";
 import { reducer as AdminAuthReducer } from "./AdminAuthRedux/reducer";
 import { reducer as AdminProductReducer } from "./admincrud/reducer";
 import CartReducer from "./CartRouter/cartReducer";
+import UserReducer from "./User/UserReducer";
 import thunk from "redux-thunk";
 
 const root_reducer = combineReducers({
   ProductReducer,
   AdminAuthReducer,
   AdminProductReducer,
-  CartReducer
+  CartReducer,
+  UserReducer,
 });
 
 const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
