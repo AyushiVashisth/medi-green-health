@@ -3,27 +3,29 @@ import { useState } from "react";
 import "./CartDisplayProduct.css";
 import { addItemQuantity, getCart, reduceItemQuantity } from "./useHandleCart";
 import { Link } from "react-router-dom";
+import { UpdateCart } from "../../../redux/CartRouter/actionCart";
 
 function CartDisplayProduct(props) {
   const [quantity, setQuantity] = useState(props.quantity);
 
   const seller = " MediGreen ";
-  const { id, name, image, price, rating, handleRemove, calculateTotalPrice } =
+  const { id, name, image, price, rating,setState, handleRemove, calculateTotalPrice ,item} =
     props;
 
   function handleReduce() {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-    reduceItemQuantity(id);
-    props.setCartItems(getCart());
+    UpdateCart(item,-1,item._id)
+    setState((prev)=>!prev)
+    // if (quantity > 1) {
+    //   setQuantity(quantity - 1);
+    // }
+    // reduceItemQuantity(id);
+    // props.setCartItems(getCart());
     // calculateTotalPrice();
   }
 
   function handleAdd() {
-    setQuantity(quantity + 1);
-    addItemQuantity(id);
-    props.setCartItems(getCart());
+    UpdateCart(item,1,item._id)
+    setState((prev)=>!prev)  
     // calculateTotalPrice();
   }
 

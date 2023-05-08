@@ -34,7 +34,9 @@ const Products = () => {
       },
     };
     dispatch(getData(obj));
+    localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NDU3ZGI3NWYwZTk1NWFjY2I2YjhmNTMiLCJpYXQiOjE2ODM1Mzc5MDB9.luIdnt1l7L-0i5g97yHUDCYkk3F8xbbMs6BwdNeEorU")
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [location.search]);
 
   return (
