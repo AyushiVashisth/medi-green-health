@@ -12,44 +12,68 @@ import {
   Heading,
   useToast,
 } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
-import { postLogin } from "../../redux/AdminAuthRedux/action";
 import { useNavigate } from "react-router-dom";
+
+const adminUser = [
+
+  {
+    "name":"Ankush Kumar",
+    "email":"adminankush@gmail.com",
+    "password":"medigreen@123"
+  },
+  {
+    "name":"Ayushi Vashisth",
+    "email":"adminayushi@gmail.com",
+    "password":"medigreen@123"
+  },
+  {
+    "name":"Aajad Kumar",
+    "email":"adminaajad@gmail.com",
+    "password":"medigreen@123"
+  },
+  {
+    "name":"Sourabh Patel",
+    "email":"adminsourabh@gmail.com",
+    "password":"medigreen@123"
+  },
+  {
+    "name":"Akshay Kumar",
+    "email":"adminakshay@gmail.com",
+    "password":"medigreen@123"
+  },
+]
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
   const toast = useToast();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userDetail = { email, password };
+   if((email==="adminankush@gmail.com" ||email==="adminayushi@gmail.com" ||email==="adminaajad@gmail.com" ||email==="adminsourabh@gmail.com" ||email==="adminakshay@gmail.com") && password === "medigreen@123"){
+    toast({
+      title: "Hello Admin.",
+      description: "Login Successfully.",
+      status: "success",
+      position: "top",
+      duration: 2000,
+      isClosable: true,
+    });
+    navigate("/adminhome");
+   }else{
+    toast({
+      title: "Wrong Credentials.",
+      description: "Please try again to Login.",
+      status: "error",
+      position: "top",
+      duration: 2000,
+      isClosable: true,
+    });
+   }
 
-    dispatch(postLogin(userDetail))
-      .then(() => {
-        toast({
-          title: "Login Success.",
-          description: "Welcome Admin.",
-          status: "success",
-          duration: 3000,
-          position:"top",
-          isClosable: true,
-        });
-        navigate("/adminhome")
-      })
-      .catch(() => {
-        toast({
-          title: "Wrong Credential.",
-          description: "Please Try again to Login.",
-          status: "error",
-          position:"top",
-          duration: 3000,
-          isClosable: true,
-        });
-      });
-
+     
+        
     setEmail("");
     setPassword("");
   };

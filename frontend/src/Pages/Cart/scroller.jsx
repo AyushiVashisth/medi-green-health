@@ -103,8 +103,6 @@ export const Scroller = () => {
                 padding="10px"
                 _hover={{
                   cursor: "pointer",
-                  bg: "black",
-                  color: "white",
                   position: "relative",
                   top: "3px",
                   right: "2px",

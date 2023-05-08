@@ -16,8 +16,7 @@ import { AiFillStar } from "react-icons/ai";
 import AdminSidebar from '../../Components/AdminSidebar';
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, get_products } from '../../redux/admincrud/action';
-import Navbar1 from '../../Components/Navbar/Navbar1';
-import Navbar2 from '../../Components/Navbar/Navbar2';
+import AdminNavbar from '../../Components/Navbar/AdminNavbar';
 
 
 
@@ -56,8 +55,7 @@ const AdminProducts = () => {
   },[])
   return (
     <Box>
-      <Navbar1/>
-      <Navbar2/>
+     <AdminNavbar/>
     <Box>
       <Box><AdminSidebar/></Box>
     <Box w="80%" ml="20%" >

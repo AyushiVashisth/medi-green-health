@@ -1,5 +1,5 @@
 import CartDisplayProduct from "./cart-display-product/CartDisplayProduct";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./CartPage.css";
 import { Link, NavLink, json } from "react-router-dom";
 import {
@@ -10,14 +10,18 @@ import {
 import { Modal } from "@chakra-ui/react";
 import { Scroller } from "./scroller";
 import Navbar1 from "../../Components/Navbar/Navbar1";
+import { DeleteCart, loca420 } from "../../redux/CartRouter/actionCart";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 function CartPage(props) {
   const cartItemst = getCart();
-
-  const [cartItems, setCartItems] = useState(getCart() || []);
+  const cart = useSelector((store) => store.CartReducer)
+  const dispatch = useDispatch()
+  const [cartItems, setCartItems] = useState([]);
   const [cartItemsCount, setCartItemsCount] = useState(cartItemst.length);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  console.log(cartItems)
   const [address, setAddress] = useState(
     JSON.parse(localStorage.getItem("userAddress")) || {
       address: "",
@@ -36,40 +40,61 @@ function CartPage(props) {
   const handleOpen = () => {
     setOpen(true);
   };
+  const [state, setState] = useState(false)
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleOrderOpen = () => {
+  //   setOrderPlaceOpen(true);
+  // };
 
-  const handleOrderOpen = () => {
-    setOrderPlaceOpen(true);
-  };
-
-  const handleOrderClose = () => {
-    setOrderPlaceOpen(false);
-  };
+  // const handleOrderClose = () => {
+  //   setOrderPlaceOpen(false);
+  // };
 
   function handleRemove(id) {
-    removeItemFromCart(id);
-    setCartItems(getCart);
-    setCartItemsCount(getCart().length);
+    DeleteCart(id)
+    setState((prev) => !prev)
+
   }
 
   const handleOrder = () => {
-    localStorage.setItem("total", JSON.stringify(totalPrice));
+    localStorage.setItem("total", JSON.stringify(totalPrice))
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+
   };
   function calculateTotalPrice() {
     let total = 0;
     // setCartItems(getCart());
-    cartItems.forEach((item) => {
-      total += +(item.quantity || 1) * +item.price;
-    });
+    for(let i=0;i<cartItems.length;i++){
+      total += cartItems[i].quantity * cartItems[i].price;
+      console.log(total)
+    }
     setTotalPrice(total);
   }
-
+console.log(totalPrice)
+const getData=async()=>{
+ await axios.get(`https://onemg-database.onrender.com/cart/`, {
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+    .then((res) => {
+      setCartItems(res.data)
+      console.log(cartItems)
+      //calculateTotalPrice()
+     
+    }).then(()=>{
+      calculateTotalPrice()
+      console.log("from callback",totalPrice)
+    })
+   
+}
   useEffect(() => {
-    calculateTotalPrice();
-  }, [cartItems]);
+        getData()
+   
+  }, [state,cartItems.length,totalPrice]);
 
   return (
     <>
@@ -79,7 +104,6 @@ function CartPage(props) {
           <div className="cart-page-left-header">
             <h1>My Cart({cartItems.length})</h1>
           </div>
-
           {/* Map items here */}
           {cartItems.length ? (
             cartItems.map((item) => (
@@ -100,7 +124,28 @@ function CartPage(props) {
             <h1>No Items in cart</h1>
           )}
         </div>
+          </div>
 
+          {/* Map items here */}
+          {cartItems.length ? cartItems.map((item) =>
+            <CartDisplayProduct
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              image={item.image}
+              price={+item.price}
+              rating={item.rating}
+              quantity={item.quantity}
+              discount={item.discount}
+              handleRemove={handleRemove}
+              setCartItems={setCartItems}
+              setState={setState}
+              calculateTotalPrice={calculateTotalPrice}
+              item={item}
+            />
+
+          ) : <h1>No Items in cart</h1>}
+        </div>
         <div className="cart-page-right">
           <h1 className="cart-price-details">PRICE DETAILS</h1>
           <hr className="plane-hr" />
@@ -139,15 +184,3 @@ function CartPage(props) {
 }
 
 export default CartPage;
-
-//https://onemg-database.onrender.com/cart/cart
-
-// {
-// "_id": "64553b2ff15f9ec53e7c77cf",
-// "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/vitamin-supplement/b/2/z/90-salmon-fish-oil-omega-3-capsule-1000-mg-with-epa-180mg-and-original-imaghhwh67puse6s.jpeg?q=70",
-// "title": "CF Salmon Fish Oil Omega 3 Capsule 1000 mg with EPA 180...",
-// "price": 695,
-// "rating": 4.4,
-// "discount": 31,
-// "category": "supplement"
-// },

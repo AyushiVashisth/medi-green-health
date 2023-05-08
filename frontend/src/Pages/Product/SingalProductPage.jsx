@@ -29,6 +29,7 @@ import {
 } from "../../Components/Caraousel/data"
 import ManualCarousels from "../../Components/Caraousel/Caraousel";
 import BigProduct from "../../Components/Caraousel/BigProduct";
+import { AddtoCart } from "../../redux/CartRouter/actionCart";
 
 const SingalProductPage = () => {
   let { id } = useParams();
@@ -220,22 +221,7 @@ const SingalProductPage = () => {
                   }}
                   color="#fff"
                   onClick={() => {
-                    //     if (addText.length > 9) {
-                    //       dispatch(
-                    //         postCartData({
-                    //           title: data.title,
-                    //           src: data.src,
-                    //           packsize: data.packsize,
-                    //           price: data.price,
-                    //           "strike-price": data["strike-price"],
-                    //           "discount-percent": data["discount-percent"],
-                    //           qty: 1,
-                    //           rating: data.rating,
-                    //           CardRatingDetail: data.CardRatingDetail,
-                    //           description: data.description,
-                    //           category: data.category,
-                    //         })
-                    //       ).then(() => {
+               AddtoCart(product)
                     setAddText("ADDED ✓");
                     //       });
                     //     }
