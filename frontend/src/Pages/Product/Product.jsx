@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "./Pagination";
 import { useLocation, useSearchParams } from "react-router-dom";
 import Navbar1 from "../../Components/Navbar/Navbar1";
+import Footer from "../../Components/Footer";
 
 const Products = () => {
   // const loading = useSelector((store) => store.ProductReducer.isLoading);
@@ -79,6 +80,7 @@ const Products = () => {
         items={items}
         currentPage={currentPage}
       />
+      <Footer/>
     </>
   );
 };

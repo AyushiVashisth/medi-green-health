@@ -58,7 +58,7 @@ function SearchBar() {
       fetch(url)
         .then((res) => res.json())
         .then((loc) => {
-          setP(loc.address.county.split(" ")[0]);
+          setP(loc.address.county);
         });
     });
   }, []);

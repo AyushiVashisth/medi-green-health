@@ -154,6 +154,7 @@
   border: 1px solid #aaa;
 }
 .place-order {
+  margin-left: 30px;
   background-color: #e72744;
   padding: 1vh 1.5vw 1vh 1.5vw;
   margin: 5px ;

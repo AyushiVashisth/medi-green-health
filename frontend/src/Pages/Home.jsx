@@ -3,6 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import Maped from "../Components/Caraousel/Maped";
 import Navbar1 from "../Components/Navbar/Navbar1";
+import Footer from "../Components/Footer";
 const settings = {
   dots: false,
   arrows: false,
@@ -29,6 +30,7 @@ const Home = () => {
     "https://onemg.gumlet.io/a_ignore,w_1013,h_250,c_fit,q_auto,f_auto/55862f78-7fff-4519-82fc-ebab1e517fdf.png",
   ];
   return (
+    <>
     <Box>
     <Navbar1/>
       <Box pt={"5px"} w={"100%"} m={"auto"}>
@@ -85,6 +87,8 @@ const Home = () => {
       </Box>
       <Maped />
     </Box>
+    <Footer/>
+    </>
   );
 };
 
