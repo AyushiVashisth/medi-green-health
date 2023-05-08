@@ -30,6 +30,7 @@ import {
 import ManualCarousels from "../../Components/Caraousel/Caraousel";
 import BigProduct from "../../Components/Caraousel/BigProduct";
 import { AddtoCart } from "../../redux/CartRouter/actionCart";
+import Footer from "../../Components/Footer";
 
 const SingalProductPage = () => {
   let { id } = useParams();
@@ -597,6 +598,7 @@ const SingalProductPage = () => {
         </Text>
         <BigProduct allData={second} />
         </Box>
+        <Footer/>
     </>
   );
 };

@@ -54,9 +54,7 @@ const Homepage = () => {
         </Box>
         <Brandslider />
       </Box>
-
       <Box textAlign="left" margin="auto" w="95%" paddingTop="30px">
-        <Footerpara />
       </Box>
     </Box>
   );

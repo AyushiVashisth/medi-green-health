@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 import { Scroller } from "./scroller";
 import { DeleteCart } from "../../redux/CartRouter/actionCart";
 import axios from "axios";
-import HomeNavbar from "../../Components/Navbar/HomeNavbar";
+import Navbar1 from "../../Components/Navbar/Navbar1";
+import Footer from "../../Components/Footer";
 function CartPage(props) {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -50,7 +51,7 @@ function CartPage(props) {
   }, [state, cartItems.length, totalPrice]);
   return (
     <>
-      <HomeNavbar />
+    <Navbar1/>
       <div className="cart-page">
         <div className="cart-page-left">
           <div className="cart-page-left-header">
@@ -100,7 +101,7 @@ function CartPage(props) {
           </div>
           <div className="place-order-div">
             <NavLink to="/payments">
-              <button onClick={handleOrder} className="place-order">
+              <button onClick={handleOrder} className="place-order" >
                 Place Order
               </button>
             </NavLink>
@@ -110,6 +111,7 @@ function CartPage(props) {
       <div>
         <Scroller />
       </div>
+      <Footer/>
     </>
   );
 }
