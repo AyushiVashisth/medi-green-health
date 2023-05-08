@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   Table,
   TableContainer,
   Tbody,
@@ -13,32 +14,35 @@ import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
 import Navbar1 from "../../Components/Navbar/Navbar1";
 import Navbar2 from "../../Components/Navbar/Navbar2";
+import {VscVerifiedFilled} from "react-icons/vsc"
 
 const AdminUsers = () => {
 
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    getJewlery();
+    getUsers();
   }, []);
-  function getJewlery() {
-    fetch("https://busy-blue-chick-tie.cyclic.app/users").then(
+  function getUsers() {
+    fetch("https://onemg-database.onrender.com/users").then(
       (result) => {
-        result.json().then((resp) => {
-          setCart(resp);
+        result.json().then((res) => {
+          setCart(res);
+          console.log(res)
         });
       }
     );
   }
   function deleteItem(id) {
-    fetch(`https://busy-blue-chick-tie.cyclic.app/users/${id}`, {
+    fetch(`https://onemg-database.onrender.com/users/${id}`, {
       method: "DELETE",
     }).then((result) => {
-      result.json().then((resp) => {
-        console.log(resp);
-        getJewlery();
+      result.json().then((res) => {
+        console.log(res);
+        getUsers();
       });
     });
   }
+
 
   return (
     <Box>
@@ -48,32 +52,35 @@ const AdminUsers = () => {
         <Box>
           <AdminSidebar />
         </Box>
-        <Box w="80%" ml="20%">
-          <TableContainer>
-            <Table size="sm" ml={250} w={"80%"}>
-              <Thead>
+        <Box w="85%" ml="20%" >
+          <TableContainer w="99%" >
+            <Table size="sm" ml={2} w={"80%"}>
+              <Thead >
                 <Tr>
+                  <Th>Users</Th>
                   <Th>User Name</Th>
-                  <Th>User Last Name</Th>
+                  
                   <Th>Email</Th>
-                  <Th>Phone Number</Th>
+                  
+                  <Th>Verified</Th>
                   <Th>Reject</Th>
                 </Tr>
               </Thead>
-              {cart.map((product, index) => (
+              {cart.length > 0 && cart.map((product, index) => (
                 <Tbody key={index}>
                   <Tr>
                     <Td>
-                      {product.first_name}
-                      {/* <Img
-                  w={50}
-                  h={50}
-                  src={product.image1}
-                /> */}
+                      {index+1}
+                     
                     </Td>
-                    <Td>{product.last_name}</Td>
+                    <Td>
+                      {product.name}
+                     
+                    </Td>
+                   
                     <Td>{product.email}</Td>
-                    <Td>{product.ph_no}</Td>
+                    <Td color="green" ><Flex fontWeight={"bold"} w="60%"justifyContent={"space-around"}>{"verified"}<VscVerifiedFilled/></Flex></Td>
+                    
                     <Td>
                       <Button
                         bg="tomato"
