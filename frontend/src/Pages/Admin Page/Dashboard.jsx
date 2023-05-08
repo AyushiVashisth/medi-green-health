@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
 import { Piechart } from "./PeiChat";
 import Navbar1 from "../../Components/Navbar/Navbar1";
-import Navbar2 from "../../Components/Navbar/Navbar2";
 
 const Blog = () => {
   const [allproducts, setAllProducts] = useState(0);
@@ -78,10 +77,9 @@ const Blog = () => {
   return (
     <Box>
     <Navbar1/>
-    <Navbar2/>
       <AdminSidebar />
-      <Box ml={["5", "", "300"]} mt={5}>
-        <SimpleGrid fontWeight={"bold"} columns={[2, 3, 3, 6]} gap={4}>
+      <Box ml={["5", "5","139","200", "300"]} mt={["100px", "10px", "10px", "10px"]}>
+        <SimpleGrid fontWeight={"bold"} columns={[2, 3,3, 3, 6]} gap={4}>
           <Box
             _hover={{
               bg: "cyan.800",
