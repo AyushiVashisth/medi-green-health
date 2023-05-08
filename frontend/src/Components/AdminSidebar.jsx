@@ -49,7 +49,7 @@ const AdminSidebar = () => {
             </Box>
           </Flex>
         </Link>
-        <Link to="/adminlogin">
+        <Link to="/adminuser">
           <Flex
             className="three"
             justifyContent={"space-evenly"}
@@ -60,7 +60,7 @@ const AdminSidebar = () => {
             </Box>
             <Box className="labelcont" id="usercontainer">
               <Text className="labels" color="white">
-                Login
+                Users
               </Text>
             </Box>
           </Flex>
@@ -93,6 +93,22 @@ const AdminSidebar = () => {
             <Box className="labelcont" id="usercontainer">
               <Text className="labels" color="white">
                 Add Products
+              </Text>
+            </Box>
+          </Flex>
+        </Link>
+        <Link to="/adminsetting">
+          <Flex
+            className="three"
+            justifyContent={"space-evenly"}
+            padding={"4%"}
+          >
+            <Box className="iconcont">
+              <MdLibraryAdd className="icons" color="white" size={25} />
+            </Box>
+            <Box className="labelcont" id="usercontainer">
+              <Text className="labels" color="white">
+                Setting
               </Text>
             </Box>
           </Flex>

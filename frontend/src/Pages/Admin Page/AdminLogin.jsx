@@ -14,12 +14,14 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { postLogin } from "../../redux/AdminAuthRedux/action";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,14 +34,17 @@ const AdminLogin = () => {
           description: "Welcome Admin.",
           status: "success",
           duration: 3000,
+          position:"top",
           isClosable: true,
         });
+        navigate("/adminhome")
       })
       .catch(() => {
         toast({
           title: "Wrong Credential.",
           description: "Please Try again to Login.",
           status: "error",
+          position:"top",
           duration: 3000,
           isClosable: true,
         });
