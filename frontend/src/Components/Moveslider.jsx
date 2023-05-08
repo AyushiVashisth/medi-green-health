@@ -1,25 +1,8 @@
-import React from 'react'
-
+import React from "react";
 
 import Slider from "react-slick";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Text,
-  Box,
-  Image
-} from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { Box, Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Moveslider = () => {
   const settings = {
@@ -37,36 +20,36 @@ const Moveslider = () => {
         <Box>
           <Link>
             <Image w="100%" h="200px" src="/assets/1.png" alt="err" />
-            </Link>
+          </Link>
         </Box>
         <Box>
           <Link>
-        <Image w="100%" h="200px" src="/assets/2.png" alt="err" />
-        </Link>
+            <Image w="100%" h="200px" src="/assets/2.png" alt="err" />
+          </Link>
         </Box>
         <Box>
           <Link>
-        <Image w="100%" h="200px" src="/assets/3.png" alt="err" />
-        </Link>
+            <Image w="100%" h="200px" src="/assets/3.png" alt="err" />
+          </Link>
         </Box>
         <Box>
           <Link>
-        <Image w="100%" h="200px" src="/assets/4.png" alt="err" />
-        </Link>
+            <Image w="100%" h="200px" src="/assets/4.png" alt="err" />
+          </Link>
         </Box>
         <Box>
           <Link>
-        <Image w="100%" h="200px" src="/assets/5.png" alt="err" />
-        </Link>
+            <Image w="100%" h="200px" src="/assets/5.png" alt="err" />
+          </Link>
         </Box>
         <Box>
           <Link>
-        <Image w="100%" h="200px" src="/assets/6.png" alt="err" />
-        </Link>
+            <Image w="100%" h="200px" src="/assets/6.png" alt="err" />
+          </Link>
         </Box>
       </Slider>
     </Box>
-  )
-}
+  );
+};
 
-export default Moveslider
+export default Moveslider;

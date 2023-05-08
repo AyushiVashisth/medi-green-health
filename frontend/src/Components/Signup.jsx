@@ -24,7 +24,6 @@ const Signup = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  // const navigate = useNavigate();
   const [loading, setloading] = useState(false);
   const toast = useToast();
 

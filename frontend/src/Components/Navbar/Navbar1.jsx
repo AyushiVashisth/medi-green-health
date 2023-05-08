@@ -22,8 +22,8 @@ import { NAV_ITEMS, AUTH_ITEMS } from "../../utils/navbar.data";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import Logout from "./Login/Login";
-import Login from "./Login/Login";
+import Logout from "../Login/Login";
+import Login from "../Login/Login";
 import Signup from "../Signup";
 
 export default function Navbar1() {

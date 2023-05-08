@@ -7,11 +7,24 @@ const TopSectionProductsPage = () => {
       <Box mt="10px">
         <Text>
           <span
-            style={{ color: "#ff6f61", cursor: "pointer", fontSize: "12px" }}
+            style={{
+              color: "#ff6f61",
+              cursor: "pointer",
+              fontSize: "12px",
+              textAlign: "center",
+              justifyContent: "center",
+            }}
           >
             Home
           </span>
-          <span style={{ color: "grey", fontSize: "12px" }}>
+          <span
+            style={{
+              color: "grey",
+              fontSize: "12px",
+              textAlign: "center",
+              justifyContent: "center",
+            }}
+          >
             {" > "}All Products
           </span>
         </Text>
@@ -20,6 +33,8 @@ const TopSectionProductsPage = () => {
           fontWeight="700"
           lineHeight={"34px"}
           m="10px 0"
+          textAlign={"center"}
+          justifyContent={"center"}
         >
           TATA 1MG HEALTH PRODUCTS
         </Heading>
@@ -53,6 +68,8 @@ const TopSectionProductsPage = () => {
         fontWeight="700"
         lineHeight={"30px"}
         m="15px 0"
+        textAlign={"center"}
+        justifyContent={"center"}
       >
         ALL PRODUCTS
       </Heading>

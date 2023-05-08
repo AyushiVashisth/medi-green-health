@@ -5,15 +5,14 @@ import {
   applyMiddleware,
 } from "redux";
 import ProductReducer from "./Product/reducerProduct";
-import {reducer as AdminAuthReducer} from "./AdminAuthRedux/reducer";
-import {reducer as AdminProductReducer} from "./admincrud/reducer";
-
+import { reducer as AdminAuthReducer } from "./AdminAuthRedux/reducer";
+import { reducer as AdminProductReducer } from "./admincrud/reducer";
 
 import thunk from "redux-thunk";
 
 const root_reducer = combineReducers({
   ProductReducer,
-  AdminAuthReducer, 
+  AdminAuthReducer,
   AdminProductReducer,
 });
 

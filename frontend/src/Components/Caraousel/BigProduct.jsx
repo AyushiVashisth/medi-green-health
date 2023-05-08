@@ -1,25 +1,23 @@
 import React from "react";
 import {
   Box,
-  Center,
   IconButton,
   Image,
   Text,
+  VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
 import Slider from "react-slick";
 
 const settings = {
   dots: false,
   autoplay: false,
   infinite: false,
-  speed: 300,
+  speed: 500,
   slidesToShow: 7,
   slidesToScroll: 7,
-
   responsive: [
     {
       breakpoint: 1024,
@@ -54,13 +52,12 @@ const settings = {
   ],
 };
 
-export default function ManualCarousels({ allData, bgcolor }) {
+export default function BigProduct({ allData }) {
   const [slider, setSlider] = React.useState(null);
   const top = useBreakpointValue({ base: "37%", md: "37%" });
   const left = useBreakpointValue({ base: "0px", md: "0px" });
-
   return (
-    <Center
+    <Box
       bgColor={"white"}
       w="100%"
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
@@ -82,29 +79,26 @@ export default function ManualCarousels({ allData, bgcolor }) {
         />
         <IconButton
           aria-label="left-arrow"
-          color="#fff"
+          color="rgb(255,111,97)"
           borderRadius="full"
           position="absolute"
           top={top}
           left={left}
-          fontWeight={"9000"}
           transform={"translate(0%, -50%)"}
           zIndex={2}
-          backgroundColor={"rgb(255,111,97)"}
           onClick={() => slider?.slickPrev()}
         >
           <IoIosArrowBack />
         </IconButton>
         <IconButton
           aria-label="right-arrow"
-          color="#fff"
+          color="rgb(255,111,97)"
           borderRadius="full"
           position="absolute"
           top={top}
           right={left}
           transform={"translate(0%, -50%)"}
           zIndex={2}
-          backgroundColor={"rgb(255,111,97)"}
           onClick={() => slider?.slickNext()}
         >
           <IoIosArrowForward />
@@ -112,24 +106,69 @@ export default function ManualCarousels({ allData, bgcolor }) {
         <Box w={"95%"} m={"auto"}>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
             {allData.map((elem) => (
-              <Box key={elem.name} border={"0px solid green"}>
+              <VStack
+                style={{ cursor: "pointer" }}
+                position={"relative"}
+                border={"0px solid red"}
+                padding={3}
+                spacing={0}
+                justifyContent={"center"}
+                alignItems={"flex-start"}
+                _hover={{ boxShadow: "xl", borderRadius: "xl" }}
+              >
                 <Box
-                  style={{ cursor: "pointer" }}
-                  _hover={{ boxShadow: "xl", rounded: "md" }}
+                  position={"absolute"}
+                  top={1}
+                  left={1}
+                  bg="#19AB2A"
+                  color="white"
+                  w="max-content"
+                  borderRadius="4px"
+                  fontSize={"12px"}
+                  padding={[0, 1, 1]}
                 >
-                  <Image
-                    style={{ display: "flex", margin: "1px auto" }}
-                    src={elem.img}
-                  />
-                  <Text textAlign="center" py="2" px="2">
-                    {elem.name}
-                  </Text>
+                  SALE
                 </Box>
-              </Box>
+
+                <Image
+                  h={["90px", "120px", "150px"]}
+                  style={{ display: "flex", margin: "2px auto" }}
+                  src={elem.image}
+                />
+                <Text
+                  textAlign="left"
+                  py="1"
+                  noOfLines={[1, 1, 2]}
+                  fontSize={"14px"}
+                  fontWeight={"semibold"}
+                >
+                  {elem.title}
+                </Text>
+                <VStack textAlign={"left"}>
+                  <Text
+                    mr={["19px", "29px", "39px", "49px", "59px"]}
+                    fontSize={"14px"}
+                  >
+                    MRP ₹{" "}
+                    <span
+                      style={{
+                        "text-decoration": "line-through",
+                        color: "red",
+                      }}
+                    >
+                      {elem.price + 400}
+                    </span>{" "}
+                    <span style={{ color: "green" }}> {elem.discount}%</span>
+                  </Text>
+                </VStack>
+                <Text ml="2" as="b">
+                  ₹ {elem.price}
+                </Text>
+              </VStack>
             ))}
           </Slider>
         </Box>
       </Box>
-    </Center>
+    </Box>
   );
 }
