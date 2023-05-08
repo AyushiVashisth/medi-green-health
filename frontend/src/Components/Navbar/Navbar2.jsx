@@ -25,6 +25,7 @@ export default function Navbar2() {
       display={["none", "none", "none", "block", "block"]}
       border="0px solid black"
       h={"auto"}
+      zIndex={10000}
     >
       <Stack
         direction={"row"}

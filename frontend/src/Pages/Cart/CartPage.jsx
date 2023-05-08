@@ -9,10 +9,10 @@ import {
 } from "./cart-display-product/useHandleCart";
 import { Modal } from "@chakra-ui/react";
 import { Scroller } from "./scroller";
+import Navbar1 from "../../Components/Navbar/Navbar1";
 import { DeleteCart, loca420 } from "../../redux/CartRouter/actionCart";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
 
 function CartPage(props) {
   const cartItemst = getCart();
@@ -62,14 +62,13 @@ function CartPage(props) {
   const handleOrder = () => {
     localStorage.setItem("total", JSON.stringify(totalPrice))
     localStorage.setItem("cartItems", JSON.stringify(cartItems))
+
   };
   function calculateTotalPrice() {
     let total = 0;
     // setCartItems(getCart());
     for(let i=0;i<cartItems.length;i++){
-
       total += cartItems[i].quantity * cartItems[i].price;
-
       console.log(total)
     }
     setTotalPrice(total);
@@ -99,11 +98,32 @@ const getData=async()=>{
 
   return (
     <>
-      <div className="cart-page" >
+    <Navbar1/>
+      <div className="cart-page">
         <div className="cart-page-left">
           <div className="cart-page-left-header">
             <h1>My Cart({cartItems.length})</h1>
-
+          </div>
+          {/* Map items here */}
+          {cartItems.length ? (
+            cartItems.map((item) => (
+              <CartDisplayProduct
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                price={+item.price}
+                rating={item.rating}
+                quantity={1}
+                discount={item.discount}
+                handleRemove={handleRemove}
+                setCartItems={setCartItems}
+              />
+            ))
+          ) : (
+            <h1>No Items in cart</h1>
+          )}
+        </div>
           </div>
 
           {/* Map items here */}
@@ -126,8 +146,6 @@ const getData=async()=>{
 
           ) : <h1>No Items in cart</h1>}
         </div>
-
-
         <div className="cart-page-right">
           <h1 className="cart-price-details">PRICE DETAILS</h1>
           <hr className="plane-hr" />
@@ -158,23 +176,11 @@ const getData=async()=>{
           </div>
         </div>
       </div>
-      <div><Scroller /></div>
+      <div>
+        <Scroller />
+      </div>
     </>
   );
 }
 
 export default CartPage;
-
-//https://onemg-database.onrender.com/cart/cart
-
-
-// {
-  // "_id": "64553b2ff15f9ec53e7c77cf",
-  // "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/vitamin-supplement/b/2/z/90-salmon-fish-oil-omega-3-capsule-1000-mg-with-epa-180mg-and-original-imaghhwh67puse6s.jpeg?q=70",
-  // "title": "CF Salmon Fish Oil Omega 3 Capsule 1000 mg with EPA 180...",
-  // "price": 695,
-  // "rating": 4.4,
-  // "discount": 31,
-  // "category": "supplement"
-// },
-

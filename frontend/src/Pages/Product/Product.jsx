@@ -8,7 +8,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "./Pagination";
 import { useLocation, useSearchParams } from "react-router-dom";
-import HomeNavbar from "../../Components/Navbar/HomeNavbar";
 import Navbar1 from "../../Components/Navbar/Navbar1";
 
 const Products = () => {
@@ -42,7 +41,6 @@ const Products = () => {
   return (
     <>
       <Navbar1 />
-      <HomeNavbar />
       <Box
         display={{ lg: "flex", md: "flex", base: "grid" }}
         gap={{ lg: "50px", md: "20px" }}

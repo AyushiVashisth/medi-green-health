@@ -13,7 +13,6 @@ import {
   Divider,
   Img,
   Circle,
-  Button,
 } from "@chakra-ui/react";
 
 import { FaShoppingCart } from "react-icons/fa";
@@ -21,23 +20,19 @@ import logo from "../../Images/logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { NAV_ITEMS, AUTH_ITEMS } from "../../utils/navbar.data";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import Logout from "../Login/Login";
 import Login from "../Login/Login";
 import Signup from "../Signup";
-import Swal from "sweetalert2";
+import HomeNavbar from "./HomeNavbar";
 
 export default function Navbar1() {
   const { isOpen, onToggle, onOpen, isLoggedIn } = useContext(AuthContext);
-  const [state, setState] = useState(false)
   const navigate = useNavigate();
-  let x=localStorage.getItem('token');
-  useEffect(() => {
-    
-  }, [state])
+
   return (
-    <Box >
+    <Box position={"sticky"} top={0} zIndex={100}>
       <Flex
         bgColor={"white"}
         color={useColorModeValue("gray.900")}
@@ -91,22 +86,8 @@ export default function Navbar1() {
           </Flex>
         </Flex>
 
-        {x ? (
-
-
-          <Text onClick={() => {
-            localStorage.removeItem('token')
-            setState((prev)=>!prev)
-            Swal.fire({
-              position: 'center',
-              icon: "success",
-              title: `Logout Successfully `,
-              showConfirmButton: false,
-              timer: 1500
-            })
-            window.location.replace('/')
-          }}>{localStorage.getItem('name')} <u style={{ "cursor": "pointer" }}>Logout</u></Text>
-
+        {isLoggedIn ? (
+          <Logout />
         ) : (
           <>
             <Text
@@ -188,6 +169,7 @@ export default function Navbar1() {
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
+      <HomeNavbar/>
     </Box>
   );
 }
