@@ -2,7 +2,6 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
 import { Piechart } from "./PeiChat";
-import Navbar1 from "../../Components/Navbar/Navbar1";
 
 const Blog = () => {
   const [allproducts, setAllProducts] = useState(0);
@@ -76,7 +75,6 @@ const Blog = () => {
       }
   return (
     <Box>
-    <Navbar1/>
       <AdminSidebar />
       <Box ml={["5", "5","139","200", "300"]} mt={["100px", "10px", "10px", "10px"]}>
         <SimpleGrid fontWeight={"bold"} columns={[2, 3,3, 3, 6]} gap={4}>

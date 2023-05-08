@@ -37,7 +37,7 @@ export default function Navbar1() {
     
   }, [state])
   return (
-    <Box position={"sticky"} top={0} >
+    <Box >
       <Flex
         bgColor={"white"}
         color={useColorModeValue("gray.900")}
