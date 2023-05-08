@@ -76,8 +76,8 @@ const Blog = () => {
   return (
     <Box>
       <AdminSidebar />
-      <Box ml={["5", "", "300"]} mt={5}>
-        <SimpleGrid fontWeight={"bold"} columns={[2, 3, 3, 6]} gap={4}>
+      <Box ml={["5", "5","139","200", "300"]} mt={["100px", "10px", "10px", "10px"]}>
+        <SimpleGrid fontWeight={"bold"} columns={[2, 3,3, 3, 6]} gap={4}>
           <Box
             _hover={{
               bg: "cyan.800",

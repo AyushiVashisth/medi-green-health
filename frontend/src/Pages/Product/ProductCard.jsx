@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductsdetails } from "../../redux/ProductDetails/action";
+import { AddtoCart } from "../../redux/CartRouter/actionCart";
 
 const ProductCard = (props) => {
   const [addText, setAddText] = useState("ADD");
@@ -104,13 +105,7 @@ const ProductCard = (props) => {
           }}
           border={"2px solid #ff6f61"}
           onClick={() => {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Your product has been added",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+          AddtoCart(props)
             setAddText("ADDED ✓");
           }}
 

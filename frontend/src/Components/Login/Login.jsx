@@ -18,6 +18,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 import Carousalsignup from "../CarousalSignup";
+import { loca420 } from "../../redux/User/action";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,44 +28,64 @@ const Login = () => {
   const navigate = useNavigate();
   const [loading, setloading] = useState(false);
   const toast = useToast();
+  const dispatch = useDispatch()
   const HandleLogin = () => {
+    localStorage.removeItem('data')
     console.log("hilogin");
     setloading(true);
     const user = {
       email,
       password,
     };
-    fetch("https://onemg-database.onrender.com/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
 
-        if (res.token) {
-          toast({
-            title: "Login Successful.",
-            description: "Redirecting to Home",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
-          });
-          setloading(false);
-          onClose();
-          navigate("/");
-        } else {
-          alert("Login failed");
-          setloading(false);
-        }
-      })
-      .catch((err) => {
-        alert("Login failed");
-        setloading(false);
+    dispatch(loca420(user)).then((res) => {
+
+   
+      toast({
+        title: "Login Successfull",
+        description: "Redirecting to Home",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
+      onClose();
+     
+      // navigate("/");
+  
+    })
+
+
+    // fetch("https://onemg-database.onrender.com/users/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(user),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res);
+
+    //     if (res.token) {
+    //       toast({
+    //         title: "Login Successful.",
+    //         description: "Redirecting to Home",
+    //         status: "success",
+    //         duration: 5000,
+    //         isClosable: true,
+    //       });
+    //       setloading(false);
+    //       onClose();
+    //       navigate("/");
+    //     } else {
+    //       alert("Login failed");
+    //       setloading(false);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     alert("Login failed");
+    //     setloading(false);
+    //   });
   };
 
   return (
@@ -108,7 +130,7 @@ const Login = () => {
                   colorScheme="red"
                   variant="solid"
                   w="90%"
-                  isLoading={loading}
+                  // isLoading={loading}
                   onClick={HandleLogin}
                 >
                   Login
