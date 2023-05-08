@@ -1,5 +1,6 @@
 
 import { Box, SimpleGrid } from "@chakra-ui/react";
+import zIndex from "@mui/material/styles/zIndex";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Legend, Tooltip } from "recharts";
@@ -74,8 +75,9 @@ export function Piechart() {
         gap={["", "", "", "700px"]}
       >
         <Box ml={["", "", "", "130px"]}>
-          <PieChart width={380} height={400}>
+          <PieChart width={380} height={400} >
             <Pie
+            
               dataKey="value"
               isAnimationActive={true}
               data={data01}
