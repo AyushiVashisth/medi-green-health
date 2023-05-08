@@ -12,9 +12,8 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import AdminSidebar from "../../Components/AdminSidebar";
-import Navbar1 from "../../Components/Navbar/Navbar1";
-import Navbar2 from "../../Components/Navbar/Navbar2";
 import {VscVerifiedFilled} from "react-icons/vsc"
+import AdminNavbar from "../../Components/Navbar/AdminNavbar";
 
 const AdminUsers = () => {
 
@@ -46,8 +45,7 @@ const AdminUsers = () => {
 
   return (
     <Box>
-      <Navbar1 />
-      <Navbar2 />
+      <AdminNavbar/>
       <Box>
         <Box>
           <AdminSidebar />

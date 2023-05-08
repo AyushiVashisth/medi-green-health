@@ -14,8 +14,8 @@ import AdminSidebar from "../../Components/AdminSidebar";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/admincrud/action";
 import { useNavigate } from "react-router-dom";
-import Navbar1 from "../../Components/Navbar/Navbar1";
-import Navbar2 from "../../Components/Navbar/Navbar2";
+import AdminNavbar from "../../Components/Navbar/AdminNavbar";
+
 
 const AdminAddProducts = () => {
   const [image, setImage] = useState("");
@@ -53,8 +53,7 @@ const AdminAddProducts = () => {
   };
   return (
     <Box>
-      <Navbar1/>
-      <Navbar2/>
+      <AdminNavbar/>
     <Box>
       <Flex className="addproductpagecontainer" justifyContent={"space-evenly"}>
         <Box className="sidebarcont">
