@@ -1,5 +1,4 @@
 import "./App.css";
-import Footer from "./Components/Footer";
 import Allroutes from "./Pages/Allroutes";
 function App() {
   return (
