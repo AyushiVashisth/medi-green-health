@@ -8,7 +8,7 @@
 
 <br/>
 
-### Frontend Deployed URL 👉 [Click here](https://medigreenhealth.netlify.app/)
+### Frontend Deployed URL 👉 [Click here](https://medigreen-health.netlify.app/)
 
 ### Backend API 👉 [Click here](https://onemg-database.onrender.com)
 
