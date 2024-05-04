@@ -1,5 +1,5 @@
 import { useDisclosure } from "@chakra-ui/react";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -7,6 +7,10 @@ export default function AuthContextProvider({ children }) {
   const { isOpen, onToggle, onOpen, onClose } = useDisclosure();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
+  // console.log("COntextAPI", token);
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
 
   return (
     <AuthContext.Provider
@@ -18,7 +22,7 @@ export default function AuthContextProvider({ children }) {
         isLoggedIn,
         setIsLoggedIn,
         token,
-        setToken,
+        setToken
       }}
     >
       {children}

@@ -1,46 +1,51 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { useDispatch } from 'react-redux';
+import * as React from "react";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+// import { useDispatch } from 'react-redux';
 // import { Button } from '@mui/material';
 // import {UdateAddress} from "../../Redux/PaymentReducer/action"
 export default function AddressForm() {
-  let initAdd={
-    "firstName":"",
-    "lastName":"",
-    "address1":"",
-    "address2":"",
-    "city":"",
-    "state":"",
-    "zip":"",
-    "country":""
+  let initAdd = {
+    firstName: "",
+    lastName: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: ""
+  };
+  const [address, setAddress] = React.useState(initAdd);
 
-  }
-  const [address,setAddress]=React.useState(initAdd)
+  //const dispatch=useDispatch()
 
-//const dispatch=useDispatch()
-
-  const handleChange=(e)=>{
-    const name=e.target.name
-    const value=e.target.value
-    setAddress({...address,[name]:value})
-
-  }
-  const handleSave=()=>{
-   //dispatch(UdateAddress(address))
-   localStorage.setItem("addressDetails",JSON.stringify(address))
-  }
-  console.log(address)
-  const {firstName,lastName,address1,address2,city,state,zip,country}=address
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setAddress({ ...address, [name]: value });
+  };
+  const handleSave = () => {
+    //dispatch(UdateAddress(address))
+    localStorage.setItem("addressDetails", JSON.stringify(address));
+  };
+  // console.log(address)
+  const { firstName, lastName, address1, address2, city, state, zip, country } =
+    address;
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom border={"2px solid green"} fontStyle={"italic"} fontWeight={"bold"}>
+      <Typography
+        variant="h6"
+        gutterBottom
+        border={"2px solid green"}
+        fontStyle={"italic"}
+        fontWeight={"bold"}
+      >
         Shipping address
       </Typography>
-      <Grid container spacing={3} >
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -144,12 +149,18 @@ export default function AddressForm() {
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" onChange={handleSave} />}
+            control={
+              <Checkbox
+                color="secondary"
+                name="saveAddress"
+                value="yes"
+                onChange={handleSave}
+              />
+            }
             label="Use this address for payment details"
           />
         </Grid>
       </Grid>
-     
     </React.Fragment>
   );
 }

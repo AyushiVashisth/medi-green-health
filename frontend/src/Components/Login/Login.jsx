@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
 import {
@@ -15,36 +15,44 @@ import {
   Button,
   Input,
   Text,
-  Box,
+  Box
 } from "@chakra-ui/react";
 import Carousalsignup from "../CarousalSignup";
 import { loca420 } from "../../redux/User/action";
 import { useDispatch } from "react-redux";
+import { AuthContext } from "../../Context/AuthContext";
+import Signup from "../Signup";
 
 const Login = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [loading, setloading] = useState(false);
   const toast = useToast();
+  const { setIsLoggedIn } = useContext(AuthContext);
+
   const dispatch = useDispatch();
+
   const HandleLogin = () => {
     localStorage.removeItem("data");
-    console.log("hilogin");
+    // console.log("hilogin");
     setloading(true);
     const user = {
       email,
-      password,
+      password
     };
 
     dispatch(loca420(user)).then((res) => {
+      // console.log("login-res", res);
+      setIsLoggedIn(true);
+      // setToken(res.token);
       toast({
         title: "Login Successfull",
         description: "Redirecting to Home",
         status: "success",
         duration: 3000,
-        isClosable: true,
+        isClosable: true
       });
       onClose();
     });
@@ -92,16 +100,16 @@ const Login = () => {
                   colorScheme="red"
                   variant="solid"
                   w="90%"
-                  // isLoading={loading}
+                  isLoading={loading}
                   onClick={HandleLogin}
                 >
-                  Login
+                  <Login />
                 </Button>
                 <Box display="flex" justifyContent="center">
                   <Text fontSize="md">New on 1mg?</Text>
-                  <Link to="/signup">
-                    <Text color="red">Sign Up</Text>
-                  </Link>
+                  <Text color="red" onClose={onClose}>
+                    <Signup />
+                  </Text>
                 </Box>
                 <Box>
                   <Text fontSize="xs">By signing up, you agree to our</Text>

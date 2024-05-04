@@ -25,7 +25,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="*">
-       MediGreen.com
+        MediGreen.com
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -62,7 +62,7 @@ export default function Checkout() {
   };
 
   return (
-    <ThemeProvider theme={theme} border="1px solid green">
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar
         border="1px solid red"
@@ -70,7 +70,7 @@ export default function Checkout() {
         elevation={0}
         sx={{
           position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
+          borderBottom: (t) => `1px solid ${t.palette.divider}`
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-around" }}>
@@ -149,7 +149,7 @@ export default function Checkout() {
         {/* Flex Logic starts from here */}
 
         <Box marginTop={"50px"}>
-          <img width="400px" src={Poster}></img>
+          <img width="400px" src={Poster} alt=""></img>
         </Box>
       </Box>
     </ThemeProvider>

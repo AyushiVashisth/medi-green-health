@@ -3,12 +3,13 @@ import React from "react";
 
 const ProductsSkeleton = () => {
   const [isLoaded, setIsLoaded] = React.useState(false);
+  console.log(setIsLoaded);
   return (
     <Grid
       templateColumns={{
         lg: "repeat(4, 1fr)",
         md: "repeat(2, 1fr)",
-        base: "repeat(1, 1fr)",
+        base: "repeat(1, 1fr)"
       }}
       gap="20px 20px"
       mt="30px"

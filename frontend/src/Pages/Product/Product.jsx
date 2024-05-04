@@ -1,6 +1,6 @@
 import FilterAndSort from "./FilterAndSort";
 import ProductCard from "./ProductCard";
-// import ProductsSkeleton from "./ProductsSkeleton";
+import ProductsSkeleton from "./ProductsSkeleton";
 import TopSectionProductsPage from "./TopSectionProductsPage";
 import { getData } from "../../redux/Product/actionProduct";
 import { Box, Grid } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ import Navbar1 from "../../Components/Navbar/Navbar1";
 import Footer from "../../Components/Footer";
 
 const Products = () => {
-  // const loading = useSelector((store) => store.ProductReducer.isLoading);
+  const loading = useSelector((store) => store.ProductReducer.isLoading);
   const data = useSelector((store) => store.ProductReducer.products);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -24,14 +24,15 @@ const Products = () => {
   };
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  console.log(setSearchParams);
 
   useEffect(() => {
     let obj = {
       params: {
         category: searchParams.getAll("category"),
         sortBy: "price",
-        order: searchParams.get("sort"),
-      },
+        order: searchParams.get("sort")
+      }
     };
     dispatch(getData(obj));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,23 +55,25 @@ const Products = () => {
               xl: "repeat(4, 1fr)",
               lg: "repeat(3, 1fr)",
               md: "repeat(2, 1fr)",
-              base: "repeat(1, 1fr)",
+              base: "repeat(1, 1fr)"
             }}
             gap="20px 20px"
             mt="30px"
           >
-            {/* {loading ? (
+            {loading ? (
               <ProductsSkeleton />
-            ) : ( */}
-            {data?.length &&
+            ) : (
+              data?.length &&
               data
-                ?.filter((item, i) => {
+                ?.slice()
+                .reverse()
+                .filter((item, i) => {
                   return i >= 8 * (currentPage - 1) && i < 8 * currentPage;
                 })
                 .map((item, i) => {
                   return <ProductCard key={i + 1} {...item} />;
-                })}
-            {/* )} */}
+                })
+            )}
           </Grid>
         </Box>
       </Box>
@@ -80,7 +83,7 @@ const Products = () => {
         items={items}
         currentPage={currentPage}
       />
-      <Footer/>
+      <Footer />
     </>
   );
 };

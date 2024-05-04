@@ -39,11 +39,11 @@ const FilterAndSort = () => {
     }
     setCategory(arr);
   };
-  console.log(category);
+  // console.log(category);
 
   //--------------------sorting---------------
   const initialSort = searchParams.get("sort");
-  console.log(initialSort);
+  // console.log(initialSort);
   const [sort, setSort] = useState(initialSort || "");
   const handleSort = (val) => {
     val === sort ? setSort("") : setSort(val);
@@ -119,10 +119,10 @@ const FilterAndSort = () => {
           <RadioGroup value={sort} onChange={handleSort} colorScheme="green">
             <Stack direction="column" spacing={3} mt={3}>
               <Radio value="asc" isChecked={sort === "asc"}>
-                Low to High
+                High to Low
               </Radio>
               <Radio value="desc" isChecked={sort === "desc"}>
-                High to Low
+                Low to Hight
               </Radio>
             </Stack>
           </RadioGroup>
@@ -224,7 +224,7 @@ const FilterAndSort = () => {
                         value={"asc"}
                         onChange={handleSort}
                       />
-                      <label className="inpLabel">Low to High</label>
+                      <label className="inpLabel">High to Low/</label>
                     </div>
 
                     <div>
@@ -235,7 +235,7 @@ const FilterAndSort = () => {
                         value={"desc"}
                         onChange={handleSort}
                       />
-                      <label className="inpLabel">High to Low</label>
+                      <label className="inpLabel">Low to High</label>
                     </div>
                   </Box>
                   <Divider />

@@ -23,7 +23,7 @@ const Blog = () => {
   function getAllProduct() {
     fetch("https://onemg-database.onrender.com/vitamin").then((result) => {
       result.json().then((res) => {
-        console.log("allproducts", res.length);
+        // console.log("allproducts", res.length);
         setAllProducts(res.length);
       });
     });
@@ -33,7 +33,7 @@ const Blog = () => {
     fetch("https://onemg-database.onrender.com/vitamin/?category=calcium").then(
       (result) => {
         result.json().then((res) => {
-          console.log("Men", res.length);
+          // console.log("Men", res.length);
           setMens(res.length);
         });
       }
@@ -45,7 +45,7 @@ const Blog = () => {
       "https://onemg-database.onrender.com/vitamin/?category=supplement"
     ).then((result) => {
       result.json().then((res) => {
-        console.log("Women", res.length);
+        // console.log("Women", res.length);
         setWomen(res.length);
       });
     });
@@ -56,7 +56,7 @@ const Blog = () => {
       "https://onemg-database.onrender.com/vitamin/?category=aryurvedic"
     ).then((result) => {
       result.json().then((res) => {
-        console.log("Kids", res.length);
+        // console.log("Kids", res.length);
         setKids(res.length);
       });
     });
@@ -66,7 +66,7 @@ const Blog = () => {
     fetch("https://onemg-database.onrender.com/vitamin/?category=mask").then(
       (result) => {
         result.json().then((res) => {
-          console.log("Both", res.length);
+          // console.log("Both", res.length);
           setBoth(res.length);
         });
       }
@@ -75,7 +75,7 @@ const Blog = () => {
   function getUser() {
     fetch("https://onemg-database.onrender.com/users").then((result) => {
       result.json().then((res) => {
-        console.log("User", res.length);
+        // console.log("User", res.length);
         setUser(res.length);
       });
     });
@@ -92,7 +92,7 @@ const Blog = () => {
             _hover={{
               bg: "cyan.800",
               color: "white",
-              cursor: "pointer",
+              cursor: "pointer"
             }}
             borderRadius={15}
             bg={"cyan.300"}
@@ -110,7 +110,7 @@ const Blog = () => {
             _hover={{
               bg: "cyan.800",
               color: "white",
-              cursor: "pointer",
+              cursor: "pointer"
             }}
             borderRadius={15}
             bg={"cyan.300"}
@@ -128,7 +128,7 @@ const Blog = () => {
             _hover={{
               bg: "cyan.800",
               color: "white",
-              cursor: "pointer",
+              cursor: "pointer"
             }}
             borderRadius={15}
             bg={"cyan.300"}
@@ -146,7 +146,7 @@ const Blog = () => {
             _hover={{
               bg: "cyan.800",
               color: "white",
-              cursor: "pointer",
+              cursor: "pointer"
             }}
             borderRadius={15}
             bg={"cyan.300"}
@@ -164,7 +164,7 @@ const Blog = () => {
             _hover={{
               bg: "cyan.800",
               color: "white",
-              cursor: "pointer",
+              cursor: "pointer"
             }}
             borderRadius={15}
             bg={"cyan.300"}
@@ -182,7 +182,7 @@ const Blog = () => {
             _hover={{
               bg: "cyan.800",
               color: "white",
-              cursor: "pointer",
+              cursor: "pointer"
             }}
             borderRadius={15}
             bg={"cyan.300"}

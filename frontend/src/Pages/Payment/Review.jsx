@@ -6,23 +6,24 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 const products = [...cartItems, { title: "Shipping", desc: "", price: "30" }];
-console.log(products);
-const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
-const payments = [
-  { name: "Card type", detail: "Visa" },
-  { name: "Card holder", detail: "Mr John Smith" },
-  { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
-  { name: "Expiry date", detail: "04/2024" },
-];
+// console.log(products);
+// const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
+// const payments = [
+//   { name: "Card type", detail: "Visa" },
+//   { name: "Card holder", detail: "Mr John Smith" },
+//   { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
+//   { name: "Expiry date", detail: "04/2024" },
+// ];
 
 export default function Review() {
-  const [total,setTotal]=useState(JSON.parse(localStorage.getItem("total")))
-console.log(total)
+  const [total, setTotal] = useState(JSON.parse(localStorage.getItem("total")));
+  console.log(setTotal);
+
   const [addressData, setAddresData] = useState({
     firstName: "",
     lastName: "",
@@ -31,14 +32,14 @@ console.log(total)
     city: "",
     state: "",
     zip: "",
-    country: "",
+    country: ""
   });
 
   const [card, setCard] = useState({
     cardName: "",
     cardNumber: "",
     expDate: "",
-    cvv: "",
+    cvv: ""
   });
 
   useEffect(() => {
@@ -46,6 +47,7 @@ console.log(total)
     let card = JSON.parse(localStorage.getItem("card"));
     setAddresData({ ...addressData, ...Data });
     setCard({ ...card });
+    // eslint-disable-next-line
   }, []);
   //console.log(addressData)
   //console.log(card)
@@ -58,7 +60,7 @@ console.log(total)
         {products.map((product, index) => (
           <ListItem key={product.title} sx={{ py: 1, px: 0 }}>
             <ListItemText
-              primary={index<products.length-1?`Product${index + 1}`:""}
+              primary={index < products.length - 1 ? `Product${index + 1}` : ""}
               secondary={`${product.title}`}
             />
             <Typography variant="body2">₹{product.price}</Typography>

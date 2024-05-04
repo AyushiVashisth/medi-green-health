@@ -5,7 +5,7 @@ import {
   IconButton,
   Image,
   Text,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -27,31 +27,31 @@ const settings = {
         slidesToShow: 7,
         slidesToScroll: 7,
         infinite: false,
-        dots: true,
-      },
+        dots: true
+      }
     },
     {
       breakpoint: 900,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 5,
-      },
+        slidesToScroll: 5
+      }
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 3,
-      },
+        slidesToScroll: 3
+      }
     },
     {
       breakpoint: 420,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-  ],
+        slidesToScroll: 2
+      }
+    }
+  ]
 };
 
 export default function ManualCarousels({ allData, bgcolor }) {
@@ -111,8 +111,8 @@ export default function ManualCarousels({ allData, bgcolor }) {
         </IconButton>
         <Box w={"95%"} m={"auto"}>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
-            {allData.map((elem) => (
-              <Box key={elem.name} border={"0px solid green"}>
+            {allData.map((elem, index) => (
+              <Box key={index} border={"0px solid green"}>
                 <Box
                   style={{ cursor: "pointer" }}
                   _hover={{ boxShadow: "xl", rounded: "md" }}

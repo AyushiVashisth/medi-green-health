@@ -1,3 +1,5 @@
+import React, { useState, useContext } from "react";
+import { AiFillStar } from "react-icons/ai";
 import {
   Box,
   Button,
@@ -5,24 +7,34 @@ import {
   GridItem,
   Heading,
   Image,
-  Text,
+  Text
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { AiFillStar } from "react-icons/ai";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductsdetails } from "../../redux/ProductDetails/action";
 import { AddtoCart } from "../../redux/CartRouter/actionCart";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../Context/AuthContext";
 
 const ProductCard = (props) => {
   const [addText, setAddText] = useState("ADD");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { token } = useContext(AuthContext);
 
   const handleDetails = (id) => {
     dispatch(getProductsdetails(id));
     navigate(`/products/${id}`);
+  };
+
+  const handleAddToCart = () => {
+    // console.log("token",token)
+    if (!token) {
+      toast.error("Please login first");
+      return;
+    }
+    AddtoCart(props);
+    setAddText("ADDED ✓");
   };
 
   return (
@@ -66,7 +78,7 @@ const ProductCard = (props) => {
           mb={"10px"}
           cursor="auto"
           _hover={{
-            bg: "#4dc65b",
+            bg: "#4dc65b"
           }}
         >
           {props.rating}
@@ -101,15 +113,10 @@ const ProductCard = (props) => {
           color="#ff6f61"
           _hover={{
             bg: "#ff6f61",
-            color: "white",
+            color: "white"
           }}
           border={"2px solid #ff6f61"}
-          onClick={() => {
-          AddtoCart(props)
-            setAddText("ADDED ✓");
-          }}
-
-          // display={isAuth ? "block" : "none"}
+          onClick={handleAddToCart}
         >
           {addText}
         </Button>

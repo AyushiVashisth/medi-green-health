@@ -42,7 +42,7 @@ export const deleteProduct = (id) =>  (dispatch) => {
   return axios
     .delete(`https://onemg-database.onrender.com/vitamin/delete/${id}`)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       dispatch({ type: DELETEPRODUCTSUCCESS });
     })
     .catch((err) => {

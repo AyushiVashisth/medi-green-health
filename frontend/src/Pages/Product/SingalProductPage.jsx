@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactImageMagnify from "react-image-magnify";
@@ -18,31 +18,32 @@ import {
   Stack,
   Text,
   UnorderedList,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import Navbar1 from "../../Components/Navbar/Navbar1";
-import {
-  healthCare_device,
-  second,
-} from "../../Components/Caraousel/data"
+import { healthCare_device, second } from "../../Components/Caraousel/data";
 import ManualCarousels from "../../Components/Caraousel/Caraousel";
 import BigProduct from "../../Components/Caraousel/BigProduct";
 import { AddtoCart } from "../../redux/CartRouter/actionCart";
 import Footer from "../../Components/Footer";
+import { AuthContext } from "../../Context/AuthContext";
+import { toast } from "react-toastify";
 
 const SingalProductPage = () => {
   let { id } = useParams();
   const [product, setProduct] = useState({});
   const { image, rating, price, title, discount, category } = product;
   const [addText, setAddText] = useState("Add To Cart");
-  console.log(product);
+  const { token } = useContext(AuthContext);
+
+  // console.log(product);
   useEffect(() => {
     axios
       .get(`https://onemg-database.onrender.com/vitamin/${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setProduct(res.data);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,28 +64,30 @@ const SingalProductPage = () => {
             <Box id="image">
               <Box style={{ width: "300px", height: "200px" }}>
                 <Box width="90%">
-                  <ReactImageMagnify
-                    {...{
-                      smallImage: {
-                        alt: { title },
-                        isFluidWidth: true,
-                        src: image,
-                        width: 140,
-                        height: 180,
-                      },
-                      largeImage: {
-                        src: image,
-                        width: 400,
-                        height: 500,
-                      },
-                      enlargedImageContainerStyle: {
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                      },
-                      lensStyle: { backgroundColor: `rgba(0,0,0,0.3)` },
-                    }}
-                  />
+                  {image && (
+                    <ReactImageMagnify
+                      {...{
+                        smallImage: {
+                          alt: title,
+                          isFluidWidth: true,
+                          src: image,
+                          width: 140,
+                          height: 180
+                        },
+                        largeImage: {
+                          src: image,
+                          width: 400,
+                          height: 500
+                        },
+                        enlargedImageContainerStyle: {
+                          width: "100%",
+                          height: "100%",
+                          backgroundSize: "cover"
+                        },
+                        lensStyle: { backgroundColor: `rgba(0,0,0,0.3)` }
+                      }}
+                    />
+                  )}
                 </Box>
               </Box>
             </Box>
@@ -127,7 +130,7 @@ const SingalProductPage = () => {
                   paddingLeft: "20px",
                   alignSelf: "flex-start",
                   fontSize: "14px",
-                  marginBottom: "10px",
+                  marginBottom: "10px"
                 }}
               >
                 <li>
@@ -163,7 +166,7 @@ const SingalProductPage = () => {
               base: "repeat(1,1fr)",
               sm: "repeat(2,1fr)",
               md: "repeat(3,1fr)",
-              lg: "repeat(1,1fr)",
+              lg: "repeat(1,1fr)"
             }}
             gap="10"
           >
@@ -174,7 +177,13 @@ const SingalProductPage = () => {
               borderRadius={"10px"}
               ml={["70px", "0px", "0px", "0px", "0px"]}
             >
-              <Flex w={"100%"} h="37px" bgColor={"green.200"} borderTopRadius="10px" p={2}>
+              <Flex
+                w={"100%"}
+                h="37px"
+                bgColor={"green.200"}
+                borderTopRadius="10px"
+                p={2}
+              >
                 <Box ml={"20px"}>
                   <BsGraphUpArrow size={20} />
                 </Box>
@@ -218,11 +227,15 @@ const SingalProductPage = () => {
                   borderRadius="5px"
                   bg={"#ff6f61"}
                   _hover={{
-                    bg: "#fd7c70",
+                    bg: "#fd7c70"
                   }}
                   color="#fff"
                   onClick={() => {
-               AddtoCart(product)
+                    if (!token) {
+                      toast.error("Please login first");
+                      return;
+                    }
+                    AddtoCart(product);
                     setAddText("ADDED ✓");
                     //       });
                     //     }
@@ -240,7 +253,7 @@ const SingalProductPage = () => {
               w={{
                 base: "250px",
                 md: "250px",
-                lg: "409px",
+                lg: "409px"
               }}
               mb={"20px"}
               ml={["80px", "0px", "0px", "0px", "0px"]}
@@ -265,7 +278,7 @@ const SingalProductPage = () => {
               w={{
                 base: "250px",
                 md: "250px",
-                lg: "409px",
+                lg: "409px"
               }}
               ml={["70px", "0px", "0px", "0px", "0px"]}
             >
@@ -305,7 +318,7 @@ const SingalProductPage = () => {
                 w={{
                   base: "100%",
                   md: "100%",
-                  lg: "65%",
+                  lg: "65%"
                 }}
                 p={4}
               >
@@ -424,7 +437,7 @@ const SingalProductPage = () => {
                   base: "repeat(1,1fr)",
                   sm: "repeat(2,1fr)",
                   md: "repeat(2,1fr)",
-                  lg: "repeat(1,1fr)",
+                  lg: "repeat(1,1fr)"
                 }}
                 margin="auto"
                 gap="10"
@@ -432,14 +445,14 @@ const SingalProductPage = () => {
                 mt={{
                   base: "20px",
                   md: "20px",
-                  lg: "0",
+                  lg: "0"
                 }}
               >
                 <VStack
                   w={{
                     base: "250px",
                     md: "250px",
-                    lg: "409px",
+                    lg: "409px"
                   }}
                   bgColor="white"
                   p={5}
@@ -484,7 +497,7 @@ const SingalProductPage = () => {
                   w={{
                     base: "250px",
                     md: "250px",
-                    lg: "409px",
+                    lg: "409px"
                   }}
                   bgColor="white"
                   p={5}
@@ -545,7 +558,7 @@ const SingalProductPage = () => {
                   w={{
                     base: "250px",
                     md: "250px",
-                    lg: "409px",
+                    lg: "409px"
                   }}
                   bgColor="white"
                   p={5}
@@ -597,8 +610,8 @@ const SingalProductPage = () => {
           स्वास्थ्य ही धन है
         </Text>
         <BigProduct allData={second} />
-        </Box>
-        <Footer/>
+      </Box>
+      <Footer />
     </>
   );
 };
@@ -608,5 +621,3 @@ const DIV = styled.div`
   margin: auto;
 `;
 export default SingalProductPage;
-
-

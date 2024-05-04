@@ -8,7 +8,7 @@ import {
   Image,
   Input,
   Stack,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
@@ -29,11 +29,13 @@ const AdminSettings = () => {
   //   dispatch(userLogout());
   //   await signOut(auth);
   // };
-  const [selectedImage, setSelectedImage] = useState("https://avatars.githubusercontent.com/u/107119119?v=4");
+  const [selectedImage, setSelectedImage] = useState(
+    "https://avatars.githubusercontent.com/u/107119119?v=4"
+  );
 
-const handleImageUpload = (event) => {
-  setSelectedImage(URL.createObjectURL(event.target.files[0]));
-};
+  const handleImageUpload = (event) => {
+    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+  };
   const navigate = useNavigate();
   const upload = (event) => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
@@ -41,9 +43,20 @@ const handleImageUpload = (event) => {
   return (
     <>
       <AdminSidebar />{" "}
-      <Box bgColor={"#d8dff7"} >
-        <Flex bgColor={"#d8dff7"} w={["97%","97%","65%","67%","67%"]} m={"auto"} >
-          <Box w={"250vh"} h={"90vh"} m={"auto"}  bgColor={"white"} p={["8","","","",""]} mt={["80px","60px","10px","40px","30px"]}>
+      <Box bgColor={"#d8dff7"}>
+        <Flex
+          bgColor={"#d8dff7"}
+          w={["97%", "97%", "65%", "67%", "67%"]}
+          m={"auto"}
+        >
+          <Box
+            w={"250vh"}
+            h={"90vh"}
+            m={"auto"}
+            bgColor={"white"}
+            p={["8", "", "", "", ""]}
+            mt={["80px", "60px", "10px", "40px", "30px"]}
+          >
             <Heading m={"auto"} w={"fit-content"}>
               Admin Settings
             </Heading>
@@ -241,7 +254,7 @@ const handleImageUpload = (event) => {
                 <Button
                   bgColor={"500"}
                   w={"200px"}
-                  left={["140px","","","",""]}
+                  left={["140px", "", "", "", ""]}
                   onClick={() => {
                     navigate("/");
                   }}
@@ -250,7 +263,7 @@ const handleImageUpload = (event) => {
                 </Button>
               </Stack>
               <Stack>
-                <Box textAlign={"center"} ml={["30px","","","",""]}>
+                <Box textAlign={"center"} ml={["30px", "", "", "", ""]}>
                   <Image
                     objectFit={"cover"}
                     borderRadius={"50%"}

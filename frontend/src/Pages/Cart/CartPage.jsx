@@ -10,7 +10,7 @@ import Footer from "../../Components/Footer";
 function CartPage(props) {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  console.log(cartItems);
+  // console.log(cartItems);
   const [state, setState] = useState(false);
   function handleRemove(id) {
     DeleteCart(id);
@@ -24,11 +24,11 @@ function CartPage(props) {
     let total = 0;
     for (let i = 0; i < cartItems.length; i++) {
       total += cartItems[i].quantity * cartItems[i].price;
-      console.log(total);
+      // console.log(total);
     }
     setTotalPrice(total);
   }
-  console.log(totalPrice);
+  // console.log(totalPrice);
   const getData = async () => {
     await axios
       .get(`https://onemg-database.onrender.com/cart/`, {
@@ -38,11 +38,11 @@ function CartPage(props) {
       })
       .then((res) => {
         setCartItems(res.data);
-        console.log(cartItems);
+        // console.log(cartItems);
       })
       .then(() => {
         calculateTotalPrice();
-        console.log("from callback", totalPrice);
+        // console.log("from callback", totalPrice);
       });
   };
   useEffect(() => {

@@ -10,38 +10,38 @@ import {
   Link,
   Button,
   Heading,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const adminUser = [
-
-  {
-    "name":"Ankush Kumar",
-    "email":"adminankush@gmail.com",
-    "password":"medigreen@123"
-  },
-  {
-    "name":"Ayushi Vashisth",
-    "email":"adminayushi@gmail.com",
-    "password":"medigreen@123"
-  },
-  {
-    "name":"Aajad Kumar",
-    "email":"adminaajad@gmail.com",
-    "password":"medigreen@123"
-  },
-  {
-    "name":"Sourabh Patel",
-    "email":"adminsourabh@gmail.com",
-    "password":"medigreen@123"
-  },
-  {
-    "name":"Akshay Kumar",
-    "email":"adminakshay@gmail.com",
-    "password":"medigreen@123"
-  },
-]
+// const adminUser = [
+//   {
+//     name: "Ankush Kumar",
+//     email: "adminankush@gmail.com",
+//     password: "medigreen@123"
+//   },
+//   {
+//     name: "Ayushi Vashisth",
+//     email: "adminayushi@gmail.com",
+//     password: "medigreen@123"
+//   },
+//   {
+//     name: "Aajad Kumar",
+//     email: "adminaajad@gmail.com",
+//     password: "medigreen@123"
+//   },
+//   {
+//     name: "Sourabh Patel",
+//     email: "adminsourabh@gmail.com",
+//     password: "medigreen@123"
+//   },
+//   {
+//     name: "Akshay Kumar",
+//     email: "adminakshay@gmail.com",
+//     password: "medigreen@123"
+//   }
+// ];
+// console.log(adminUser)
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -51,29 +51,34 @@ const AdminLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   if((email==="adminankush@gmail.com" ||email==="adminayushi@gmail.com" ||email==="adminaajad@gmail.com" ||email==="adminsourabh@gmail.com" ||email==="adminakshay@gmail.com") && password === "medigreen@123"){
-    toast({
-      title: "Hello Admin.",
-      description: "Login Successfully.",
-      status: "success",
-      position: "top",
-      duration: 2000,
-      isClosable: true,
-    });
-    navigate("/adminhome");
-   }else{
-    toast({
-      title: "Wrong Credentials.",
-      description: "Please try again to Login.",
-      status: "error",
-      position: "top",
-      duration: 2000,
-      isClosable: true,
-    });
-   }
+    if (
+      (email === "adminankush@gmail.com" ||
+        email === "adminayushi@gmail.com" ||
+        email === "adminaajad@gmail.com" ||
+        email === "adminsourabh@gmail.com" ||
+        email === "adminakshay@gmail.com") &&
+      password === "medigreen@123"
+    ) {
+      toast({
+        title: "Hello Admin.",
+        description: "Login Successfully.",
+        status: "success",
+        position: "top",
+        duration: 2000,
+        isClosable: true
+      });
+      navigate("/adminhome");
+    } else {
+      toast({
+        title: "Wrong Credentials.",
+        description: "Please try again to Login.",
+        status: "error",
+        position: "top",
+        duration: 2000,
+        isClosable: true
+      });
+    }
 
-     
-        
     setEmail("");
     setPassword("");
   };
@@ -108,7 +113,6 @@ const AdminLogin = () => {
                 id="email"
                 display="inline-block"
                 mr={2}
-                
                 width={"100%"}
               >
                 <FormLabel>Email address</FormLabel>
@@ -117,7 +121,6 @@ const AdminLogin = () => {
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  
                 />
               </FormControl>
               <FormControl id="password">
@@ -144,7 +147,7 @@ const AdminLogin = () => {
                   color={"white"}
                   _hover={{
                     bg: "#eeeeee",
-                    color: "black",
+                    color: "black"
                   }}
                   onClick={handleSubmit}
                 >

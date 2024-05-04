@@ -7,47 +7,50 @@ import {
   InputLeftAddon,
   Text,
   Link,
-  useBoolean,
+  useBoolean
 } from "@chakra-ui/react";
 import useThrottle from "../../Components/customHooks/useThrottle";
 import React, { useEffect, useState } from "react";
 import { FaSearchLocation } from "react-icons/fa";
+
 function SearchBar() {
   const [onChangeValue, setOnChangeValue] = useState("");
   const [search, setSearch] = useState([]);
   const [Products, setProducts] = useState([]);
   const [showDropdown, setShowDropdown] = useBoolean();
   const throttledText = useThrottle(onChangeValue, 400);
+  console.log(showDropdown);
 
   const searchMovies = async () => {
     const data = await fetch(`https://onemg-database.onrender.com/vitamin`);
     const res = await data.json();
     setProducts(res);
   };
+
   useEffect(() => {
     searchMovies();
   }, []);
+
   useEffect(() => {
     if (throttledText === "") {
       setSearch([]);
     } else {
-      console.log(throttledText);
       let newSuggestions = Products.filter((item) => {
-        return item.title
-          .split(" ")
-          .join("")
-          .trim()
-          .toLowerCase()
-          .indexOf(throttledText) !== -1
-          ? true
-          : false;
+        return (
+          item.title
+            .split(" ")
+            .join("")
+            .trim()
+            .toLowerCase()
+            .indexOf(throttledText) !== -1
+        );
       });
       setSearch(newSuggestions);
       setShowDropdown.on();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [throttledText]);
-  console.log(search);
+
   const [add, setP] = useState("");
 
   useEffect(() => {
@@ -62,6 +65,7 @@ function SearchBar() {
         });
     });
   }, []);
+
   return (
     <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff">
       <Flex justify={"space-around"} minH={"40px"} py="10px" align={"center"}>
@@ -95,6 +99,7 @@ function SearchBar() {
               bg={"#f1f4f6"}
               focusBorderColor="#f1f4f6"
               value={add ? add : "New Delhi"}
+              readOnly
             />
           </InputGroup>
           <Input
@@ -103,6 +108,7 @@ function SearchBar() {
             placeholder="Search for medicines and health products"
             size="sm"
             w={"100%"}
+            value={onChangeValue} // Provide value prop
             onChange={(e) => setOnChangeValue(e.target.value)}
           />
           {search.length > 0 && (

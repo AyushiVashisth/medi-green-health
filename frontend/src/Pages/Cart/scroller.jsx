@@ -1,32 +1,31 @@
 // BrandedDeals
 
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import StarRating from "./StarRating";
 import { Box, Image, Text, Flex } from "@chakra-ui/react";
-import { AiOutlineUnderline } from "react-icons/ai";
+// import { AiOutlineUnderline } from "react-icons/ai";
 export const Scroller = () => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 5
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5,
+      items: 5
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 2
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+      items: 1
+    }
   };
 
   let list = [
@@ -36,7 +35,7 @@ export const Scroller = () => {
       MRP: "₹2120",
       price: " ₹1399",
       discount: "34%",
-      rating: 4.2,
+      rating: 4.2
     },
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/09fa5f9f3f744e989a3bf4cb42652a23.jpg",
@@ -44,7 +43,7 @@ export const Scroller = () => {
       MRP: "₹99",
       price: " ₹88",
       discount: "11%",
-      rating: 3.5,
+      rating: 3.5
     },
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/1989fc8a41aa4bc4880e8b6094a2200e.jpg",
@@ -52,16 +51,17 @@ export const Scroller = () => {
       MRP: "₹360",
       price: " ₹270",
       discount: "25%",
-      rating: 4.3,
+      rating: 4.3
     },
-    
+
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/fb86e12d-a420-4fd0-9177-f082253d401f.jpeg",
-      title: "Tata 1mg Antifungal Dusting Powder for Sweat Rash, Itching, Skin Irritation, Chafing & Redness",
+      title:
+        "Tata 1mg Antifungal Dusting Powder for Sweat Rash, Itching, Skin Irritation, Chafing & Redness",
       MRP: "₹120",
       price: " ₹90",
       discount: "30%",
-      rating: 3.6,
+      rating: 3.6
     },
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/69199e6a4d99439fb23db417b156b68f.jpg",
@@ -69,15 +69,15 @@ export const Scroller = () => {
       MRP: "₹100",
       price: " ₹90",
       discount: "10%",
-      rating: 3.5,
-    }, 
+      rating: 3.5
+    },
     {
       img: "https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/qzz0mjr3m4rcely6spks.jpg",
       title: "Dabur Vasant Kusumakar Ras with Gold & Pearl Tablet",
       MRP: "₹2120",
       price: " ₹1399",
       discount: "34%",
-      rating: 4.2,
+      rating: 4.2
     }
   ];
 
@@ -91,8 +91,8 @@ export const Scroller = () => {
           position: "relative",
           marginTop: "32px",
           boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
-          width:"90%",
-          margin:"auto"
+          width: "90%",
+          margin: "auto"
         }}
       >
         <Carousel responsive={responsive}>
@@ -106,7 +106,7 @@ export const Scroller = () => {
                   position: "relative",
                   top: "3px",
                   right: "2px",
-                  transition: "2sec",
+                  transition: "2sec"
                 }}
                 key={index}
               >
@@ -132,8 +132,6 @@ export const Scroller = () => {
               </Box>
             );
           })}
-
-         
         </Carousel>
       </BOX>
     </>
@@ -141,13 +139,13 @@ export const Scroller = () => {
 };
 
 const DIV = styled.div`
-     margin-top:20px;
+  margin-top: 20px;
   .heading-home-page {
     margin-top: 52px;
     display: flex;
     font-size: 35px;
     font-weight: 700;
-    margin-left:7%
+    margin-left: 7%;
   }
   .div-1 {
   }

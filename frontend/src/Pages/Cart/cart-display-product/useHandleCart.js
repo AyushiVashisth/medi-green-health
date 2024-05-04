@@ -1,6 +1,7 @@
 function getCart() {
-  if (localStorage.getItem("cartItems"))
-   { return JSON.parse(localStorage.getItem("cartItems"))};
+  if (localStorage.getItem("cartItems")) {
+    return JSON.parse(localStorage.getItem("cartItems"));
+  }
 
   // localStorage.setItem("cartItems", JSON.stringify([
   // {
@@ -22,9 +23,9 @@ function addItemToCart({
   price,
   rating,
   quantity,
-  img,
-  discount,
-  category
+  img
+  // discount,
+  // category
 }) {
   const cart = JSON.parse(localStorage.getItem("cartItems"));
   // console.log(cart);
@@ -35,14 +36,14 @@ function addItemToCart({
 
 function removeItemFromCart(id) {
   const cart = JSON.parse(localStorage.getItem("cartItems"));
-  const tempCart = cart.filter((item) => item.id != id);
+  const tempCart = cart.filter((item) => item.id !== id);
   localStorage.setItem("cartItems", JSON.stringify(tempCart));
 }
 
 function reduceItemQuantity(id) {
   const cart = JSON.parse(localStorage.getItem("cartItems"));
   const tempCart = cart.map((item) => {
-    if (item.id == id && item.quantity > 1) item.quantity -= 1;
+    if (item.id === id && item.quantity > 1) item.quantity -= 1;
 
     return item;
   });
@@ -52,7 +53,7 @@ function reduceItemQuantity(id) {
 function addItemQuantity(id) {
   const cart = JSON.parse(localStorage.getItem("cartItems"));
   const tempCart = cart.map((item) => {
-    if (item.id == id) {
+    if (item.id === id) {
       item.quantity += 1;
     }
 
@@ -74,14 +75,14 @@ function addOrderItem({
   discription,
   quantity,
   img,
-  date,
+  date
 }) {
   const orders = JSON.parse(localStorage.getItem("orderItems")) || [];
 
   let flag = true;
 
   orders.map((item) => {
-    if (item.id == id) flag = false;
+    if (item.id === id) flag = false;
   });
 
   if (flag) {
@@ -96,9 +97,6 @@ function addOrderArr(arr) {
   localStorage.setItem("orderItems", JSON.stringify(orders));
 }
 
-
-
-
 export {
   getCart,
   addItemToCart,
@@ -107,6 +105,5 @@ export {
   reduceItemQuantity,
   getOrders,
   addOrderItem,
-  addOrderArr,
-  
+  addOrderArr
 };

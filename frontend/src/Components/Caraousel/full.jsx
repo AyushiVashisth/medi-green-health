@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Box,
   Center,
@@ -8,7 +7,7 @@ import {
   Stack,
   Tag,
   Grid,
-  Image,
+  Image
 } from "@chakra-ui/react";
 const Full = () => {
   const checkups = [
@@ -21,7 +20,7 @@ const Full = () => {
       offered: "4198",
       discount: "50% off",
       rating: "4.4",
-      test: "Includes  78 Test",
+      test: "Includes  78 Test"
     },
     {
       id: 2,
@@ -32,7 +31,7 @@ const Full = () => {
       offered: "800",
       discount: "50% off",
       rating: "4.6",
-      test: "Includes  3 Test",
+      test: "Includes  3 Test"
     },
     {
       id: 3,
@@ -43,7 +42,7 @@ const Full = () => {
       offered: "1290",
       discount: "50% off",
       rating: "4.8",
-      test: "Includes  58 Test",
+      test: "Includes  58 Test"
     },
     {
       id: 4,
@@ -54,8 +53,8 @@ const Full = () => {
       offered: "3390",
       discount: "50% off",
       rating: "4.9",
-      test: "Includes  71 Test",
-    },
+      test: "Includes  71 Test"
+    }
   ];
   return (
     <div>
@@ -73,7 +72,7 @@ const Full = () => {
             md: "repeat(2,1fr)",
             lg: "repeat(2,1fr)",
             xl: "repeat(3,1fr)",
-            "2xl": "repeat(4,1fr)",
+            "2xl": "repeat(4,1fr)"
           }}
           pt={"5"}
           pb={"5"}
@@ -81,20 +80,20 @@ const Full = () => {
           m="auto"
           gap="5"
         >
-          {checkups.map((item) => {
+          {checkups.map((item, index) => {
             return (
               <Box
+                key={index}
                 _hover={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
                 p="5"
                 align="left"
-                key={item.id}
                 w={{
                   base: "100%",
                   sm: "100%",
                   md: "300px",
                   lg: "270px",
                   xl: "300px",
-                  "2xl": "300px",
+                  "2xl": "300px"
                 }}
                 h="180px"
                 borderWidth={2}

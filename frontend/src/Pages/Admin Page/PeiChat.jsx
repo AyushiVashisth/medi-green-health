@@ -1,6 +1,5 @@
-
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import zIndex from "@mui/material/styles/zIndex";
+// import zIndex from "@mui/material/styles/zIndex";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Legend, Tooltip } from "recharts";
@@ -11,7 +10,7 @@ const temp = [
   { name: "Group A", value: 400 },
   { name: "Group B", value: 300 },
   { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
+  { name: "Group D", value: 200 }
 ];
 
 export function Piechart() {
@@ -21,35 +20,45 @@ export function Piechart() {
     let arr = [];
     let obj = {};
 
-    let allproducts = await axios.get("https://onemg-database.onrender.com/vitamin");
+    let allproducts = await axios.get(
+      "https://onemg-database.onrender.com/vitamin"
+    );
     allproducts = allproducts.data.length;
     obj = {};
     obj.name = "Allproducts";
     obj.value = allproducts;
     arr.push(obj);
 
-    let Men = await axios.get("https://onemg-database.onrender.com/vitamin/?category=calcium");
+    let Men = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=calcium"
+    );
     Men = Men.data.length;
     obj = {};
     obj.name = "calcium";
     obj.value = Men;
     arr.push(obj);
 
-    let Women = await axios.get("https://onemg-database.onrender.com/vitamin/?category=supplement");
+    let Women = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=supplement"
+    );
     Women = Women.data.length;
     obj = {};
     obj.name = "supplement";
     obj.value = Women;
     arr.push(obj);
 
-    let Kids = await axios.get("https://onemg-database.onrender.com/vitamin/?category=mask");
+    let Kids = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=mask"
+    );
     Kids = Kids.data.length;
     obj = {};
     obj.name = "Mask";
     obj.value = Kids;
     arr.push(obj);
 
-    let Both = await axios.get("https://onemg-database.onrender.com/vitamin/?category=aryurvedic");
+    let Both = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=aryurvedic"
+    );
     Both = Both.data.length;
     obj = {};
     obj.name = "aryurvedic";
@@ -75,9 +84,8 @@ export function Piechart() {
         gap={["", "", "", "700px"]}
       >
         <Box ml={["20px", "20px", "150px", "130px"]}>
-          <PieChart width={380} height={400} >
+          <PieChart width={380} height={400}>
             <Pie
-            
               dataKey="value"
               isAnimationActive={true}
               data={data01}
@@ -90,7 +98,7 @@ export function Piechart() {
             <Tooltip />
           </PieChart>
         </Box>
-        <Box ml={["1px", "20px", "120px", "130px"]} >
+        <Box ml={["1px", "20px", "120px", "130px"]}>
           <LineChart1 />
         </Box>
       </SimpleGrid>
@@ -103,31 +111,41 @@ export function LineChart1() {
   async function getData() {
     let arr = [{ name: "Price", uv: 0 }];
 
-    let products = await axios.get("https://onemg-database.onrender.com/vitamin/?category=calcium");
+    let products = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=calcium"
+    );
     products = products.data;
     products.map((el) => {
       return arr.push({ uv: parseInt(el.price) });
     });
 
-    let men = await axios.get("https://onemg-database.onrender.com/vitamin/?category=calcium");
+    let men = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=calcium"
+    );
     men = men.data;
     men.map((el) => {
       return arr.push({ uv: parseInt(el.price) });
     });
 
-    let Women = await axios.get("https://onemg-database.onrender.com/vitamin/?category=calcium");
+    let Women = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=calcium"
+    );
     Women = Women.data;
     Women.map((el) => {
       return arr.push({ uv: parseInt(el.price) });
     });
 
-    let Kids = await axios.get("https://onemg-database.onrender.com/vitamin/?category=calcium");
+    let Kids = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=calcium"
+    );
     Kids = Kids.data;
     Kids.map((el) => {
       return arr.push({ uv: parseInt(el.price) });
     });
 
-    let Both = await axios.get("https://onemg-database.onrender.com/vitamin/?category=calcium");
+    let Both = await axios.get(
+      "https://onemg-database.onrender.com/vitamin/?category=calcium"
+    );
     Both = Both.data;
     Both.map((el) => {
       return arr.push({ uv: parseInt(el.price) });

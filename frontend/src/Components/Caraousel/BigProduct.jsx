@@ -5,7 +5,7 @@ import {
   Image,
   Text,
   VStack,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -25,31 +25,31 @@ const settings = {
         slidesToShow: 7,
         slidesToScroll: 7,
         infinite: false,
-        dots: true,
-      },
+        dots: true
+      }
     },
     {
       breakpoint: 900,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 5,
-      },
+        slidesToScroll: 5
+      }
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 3,
-      },
+        slidesToScroll: 3
+      }
     },
     {
       breakpoint: 420,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-  ],
+        slidesToScroll: 2
+      }
+    }
+  ]
 };
 
 export default function BigProduct({ allData }) {
@@ -105,8 +105,9 @@ export default function BigProduct({ allData }) {
         </IconButton>
         <Box w={"95%"} m={"auto"}>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
-            {allData.map((elem) => (
+            {allData.map((elem, index) => (
               <VStack
+                key={index}
                 style={{ cursor: "pointer" }}
                 position={"relative"}
                 border={"0px solid red"}
@@ -152,8 +153,8 @@ export default function BigProduct({ allData }) {
                     MRP ₹{" "}
                     <span
                       style={{
-                        "text-decoration": "line-through",
-                        color: "red",
+                        textDecoration: "line-through",
+                        color: "red"
                       }}
                     >
                       {elem.price + 400}
